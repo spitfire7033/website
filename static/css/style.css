@@ -1,0 +1,52 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #1a1a1a;
+    color: #444;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+    overflow-x: hidden;
+}
+
+.hero {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+#title-text {
+    margin: 0;
+    line-height: 1.1; /* Increased line height for spacing between words */
+    padding: 10px;    /* Padding around the text block */
+    text-transform: uppercase;
+    white-space: normal;
+    text-align: center;
+    /* Initial font size, will be overridden by JS */
+    font-size: 10vw; 
+    z-index: 1;
+}
+
+/* Blur Animation */
+@keyframes blur-effect {
+    0% { filter: blur(0px); }
+    50% { filter: blur(20px); }
+    100% { filter: blur(0px); }
+}
+
+.blur-active {
+    animation: blur-effect 5s ease-in-out;
+}
+
+.content {
+    min-height: 100vh;
+    background-color: #111;
+    color: #888;
+    padding: 50px;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
