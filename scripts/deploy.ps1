@@ -1,5 +1,7 @@
 $ErrorActionPreference = "Stop"
 
+Set-Location -Path "$PSScriptRoot\.."
+
 Write-Host "Deploying to Google App Engine (Project: alfons-walker)..."
 
 # Ensure gcloud is installed

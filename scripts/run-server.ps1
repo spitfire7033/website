@@ -1,5 +1,7 @@
 $ErrorActionPreference = "Stop"
 
+Set-Location -Path "$PSScriptRoot\.."
+
 Write-Host "Checking for virtual environment..."
 if (-not (Test-Path "venv")) {
     Write-Host "Creating virtual environment..."
