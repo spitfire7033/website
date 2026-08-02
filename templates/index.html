@@ -12,19 +12,23 @@
     <meta property="og:url" content="https://alfonswalker.com">
     <meta name="twitter:card" content="summary">
     <link rel="icon" type="image/png" href="/static/assets/img/logo.png">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="canonical" href="https://alfonswalker.com/">
+    <meta property="og:image" content="https://alfonswalker.com/static/assets/img/logo.png">
+    <script>if(localStorage.getItem('theme')==='light')document.documentElement.classList.add('light-preload');</script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="/static/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous">
 </head>
 
 <body>
+    <a href="#main-content" class="skip-link" data-i18n="nav.skipToContent">Přeskočit na hlavní obsah</a>
     <!-- Top Controls: Language & Theme -->
     <div class="top-controls">
-        <button id="langToggle" class="control-btn shadow">
+        <button id="langToggle" class="control-btn shadow" aria-label="Switch language">
             <i class="fa-solid fa-globe"></i> <span id="langText">English</span>
         </button>
-        <button id="themeToggle" class="control-btn shadow">
+        <button id="themeToggle" class="control-btn shadow" aria-label="Toggle theme">
             <i id="themeIcon" class="fa-solid fa-sun"></i> <span id="themeText">Světlý</span>
         </button>
     </div>
@@ -36,8 +40,9 @@
         <a href="#projects" class="side-nav-link text-decoration-none"><i class="fa-solid fa-code me-2"></i> <span data-i18n="nav.projects">Projekty</span></a>
         <a href="#certificates" class="side-nav-link text-decoration-none"><i class="fa-solid fa-award me-2"></i> <span data-i18n="nav.certificates">Certifikáty</span></a>
         <a href="#contact" class="side-nav-link text-decoration-none"><i class="fa-solid fa-envelope me-2"></i> <span data-i18n="nav.contact">Kontakt</span></a>
+        <a href="/logo-manual" class="side-nav-link text-decoration-none"><i class="fa-solid fa-graduation-cap me-2"></i> <span data-i18n="nav.logoManual">Informatika zš Vitae a další info</span></a>
     </nav>
-    <button id="sidebarToggle" class="sidebar-toggle" title="Toggle sidebar">
+    <button id="sidebarToggle" class="sidebar-toggle" title="Toggle sidebar" aria-label="Toggle Navigation">
         <i class="fa-solid fa-chevron-right"></i>
     </button>
     <div id="sidebarOverlay" class="sidebar-overlay"></div>
@@ -46,22 +51,38 @@
         <div class="hero-content container">
             <img src="/static/assets/img/logo.png" alt="Alfons Walker Logo" class="hero-logo mb-4">
             <h1 class="display-3 fw-bold mb-3 hero-title">Alfons Zac Walker</h1>
-            <p class="lead fs-4 hero-subtitle" data-i18n="hero.subtitle">Kód • Technologie • Elektronika</p>
+            <p class="lead fs-4 hero-subtitle" data-i18n="hero.subtitle">Kód • Kybernetická bezpečnost • Elektronika</p>
+            <div class="hero-quote mt-4">
+                <blockquote class="personal-quote" data-i18n="hero.quote">
+                    <i class="fa-solid fa-quote-left quote-icon"></i>
+                    Každý systém má slabinu. Moje práce je ji najít jako první.
+                    <i class="fa-solid fa-quote-right quote-icon"></i>
+                </blockquote>
+            </div>
+            <div class="hero-cta mt-4">
+                <a href="/logo-manual" class="btn btn-primary btn-lg px-4 py-3 shadow" data-i18n="hero.cta">
+                    Informatika zš Vitae a další info <i class="fa-solid fa-graduation-cap ms-2"></i>
+                </a>
+                <div class="hero-terminal mt-3" data-i18n="hero.terminal">
+                    <span class="terminal-prompt">$</span> <span class="terminal-text">securing the digital world</span><span class="terminal-cursor">_</span>
+                </div>
+            </div>
         </div>
         <div class="hero-blob hero-blob-1"></div>
         <div class="hero-blob hero-blob-2"></div>
     </header>
 
-    <div class="container mt-5">
-        <section id="about" class="mb-5">
+    <main id="main-content">
+        <div class="container mt-5">
+            <section id="about" class="mb-5">
             <h2 class="text-center" data-i18n="about.title">O mně</h2>
             <div class="card mx-auto shadow-sm" style="max-width: 800px;">
                 <div class="card-body">
                     <p class="fs-5 text-center mb-0" style="line-height: 1.8;" data-i18n="about.description">
-                        Jsem nezávislý vývojář specializující se na tvorbu moderních webových aplikací a softwaru na
-                        míru. Ke každému klientovi a projektu přistupuji individuálně s maximálním důrazem na výkon, 
-                        skvělý uživatelský zážitek a čistý kód. Rád přijímám nové výzvy a měním vaše nápady 
-                        ve funkční digitální produkty.
+                        Jsem nezávislý vývojář se zaměřením na kybernetickou bezpečnost, moderní webové aplikace 
+                        a software na míru. Ke každému projektu přistupuji s důrazem na bezpečnou architekturu, 
+                        výkon a čistý kód. Od podzimu studuji obor Kybernetická bezpečnost na SSPŠ – 
+                        bezpečnost pro mě není jen téma, ale způsob myšlení.
                     </p>
                 </div>
             </div>
@@ -80,7 +101,7 @@
                             </div>
                             <div class="col-md-8 px-2" style="border-left: 1px solid var(--card-border-left);">
                                 <div class="card-body p-4">
-                                    <h3 class="card-title mb-3" data-i18n="projects.politics.title">Organizace akce „Staň se politikem" (Next Zone, 2. 2. 2026)</h3>
+                                    <h3 class="card-title mb-3" data-i18n="projects.politics.title">Organizace akce „Staň se politikem“ (Next Zone, 2. 2. 2026)</h3>
                                     <p class="card-text text-start fs-5 mb-0" data-i18n="projects.politics.description">
                                         Jako spoluorganizátor jsem se podílel na přípravě politické soutěže zaměřené na kritické
                                         myšlení a komunikaci, která proběhla za podpory UŠI. V týmu jsem zajišťoval prostory,
@@ -99,7 +120,7 @@
                         <div class="card-body">
                             <h5 class="card-title" data-i18n="projects.frydryskova.title">Webová stránka katerinafrydryskova.cz</h5>
                             <p class="card-text" data-i18n="projects.frydryskova.description">
-                                Spolupracoval jsem na tvorbě webové stránce pro Mgr. Kateřinu Frydryškovou – terapeutku
+                                Spolupracoval jsem na tvorbě webové stránky pro Mgr. Kateřinu Frydryškovou – terapeutku
                                 vztahu k jídlu, tělu a sobě.
                             </p>
                             <a href="https://katerinafrydryskova.cz" target="_blank" class="btn btn-primary" data-i18n="projects.frydryskova.button">Navštívit web</a>
@@ -135,7 +156,7 @@
                         <div class="card-body text-center d-flex flex-column justify-content-center">
                             <i class="fa-solid fa-language fa-3x mb-3 text-info"></i>
                             <h5 class="card-title">Cambridge English (B2)</h5>
-                            <p class="card-text" data-i18n="certificates.cambridge.description">Mezinárodně uznávaný certifikát prokazující pokročilou znalost anglického jazyka plynulou komunikaci s klienty.</p>
+                            <p class="card-text" data-i18n="certificates.cambridge.description">Mezinárodně uznávaný certifikát prokazující pokročilou znalost anglického jazyka a plynulou komunikaci s klienty.</p>
                         </div>
                     </div>
                 </div>
@@ -144,7 +165,7 @@
                         <div class="card-body text-center d-flex flex-column justify-content-center">
                             <i class="fa-solid fa-robot fa-3x mb-3 text-info"></i>
                             <h5 class="card-title">Elements of AI</h5>
-                            <p class="card-text" data-i18n="certificates.elementsai.description">Odborné školení zaměřené na základy umělé inteligence, strojového učení a jejich praktické využití v praxi.</p>
+                            <p class="card-text" data-i18n="certificates.elementsai.description">Odborné školení zaměřené na základy umělé inteligence, strojového učení a jejich praktické využití.</p>
                         </div>
                     </div>
                 </div>
@@ -160,7 +181,7 @@
                         Neváhejte mě kontaktovat.
                     </p>
 
-                    <form action="https://formspree.io/f/mdkqdadj" method="POST" class="mb-5">
+                    <form id="contactForm" action="https://formspree.io/f/mdkqdadj" method="POST" class="mb-5">
                         <div class="row g-4 mb-4">
                             <div class="col-md-6">
                                 <label class="text-muted ms-2 mb-2 small fw-bold" data-i18n="contact.form.name">Jméno</label>
@@ -184,17 +205,17 @@
                     
                     <h4 class="text-center mb-4" data-i18n="contact.social.title">Najdete mě na sociálních sítích</h4>
                     <div class="d-flex justify-content-center gap-4">
-                        <a href="https://www.linkedin.com/in/alfons-walker-5a26b3403" target="_blank" class="text-decoration-none">
+                        <a href="https://www.linkedin.com/in/alfons-walker-5a26b3403" target="_blank" class="text-decoration-none" aria-label="LinkedIn Profile">
                             <div class="social-icon d-flex align-items-center justify-content-center" style="width: 60px; height: 60px; filter: none !important;">
                                 <i class="fa-brands fa-linkedin-in fs-2 text-info"></i>
                             </div>
                         </a>
-                        <a href="https://github.com/spitfire7033" target="_blank" class="text-decoration-none">
+                        <a href="https://github.com/spitfire7033" target="_blank" class="text-decoration-none" aria-label="GitHub Profile">
                             <div class="social-icon d-flex align-items-center justify-content-center" style="width: 60px; height: 60px; filter: none !important;">
                                 <i class="fa-brands fa-github fs-2" style="color: var(--github-icon-color);"></i>
                             </div>
                         </a>
-                        <a href="https://www.instagram.com/alfons_walk/" target="_blank" class="text-decoration-none">
+                        <a href="https://www.instagram.com/alfons_walk/" target="_blank" class="text-decoration-none" aria-label="Instagram Profile">
                             <div class="social-icon d-flex align-items-center justify-content-center" style="width: 60px; height: 60px; filter: none !important;">
                                 <i class="fa-brands fa-instagram fs-2" style="color: #E1306C;"></i>
                             </div>
@@ -204,12 +225,13 @@
             </div>
         </section>
     </div>
+    </main>
 
     <footer class="text-center p-3 mt-5">
         <p>&copy; <span id="currentYear"></span> Alfons Walker</p>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <script src="/static/js/main.js"></script>
 </body>
 
