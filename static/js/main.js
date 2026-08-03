@@ -96,7 +96,7 @@ const translations = {
 };
 
 let currentLang = localStorage.getItem('lang') || 'cz';
-let currentTheme = localStorage.getItem('theme') || 'dark';
+let currentTheme = localStorage.getItem('theme') || 'light';
 
 document.addEventListener("DOMContentLoaded", () => {
     // Store original Czech content for all translatable elements
@@ -209,87 +209,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // AJAX contact form submission
-    const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-        contactForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const submitBtn = contactForm.querySelector('button[type="submit"]');
-            const originalBtnHTML = submitBtn.innerHTML;
-            const inputs = contactForm.querySelectorAll('input, textarea, button');
-
-            // Disable form during submission
-            inputs.forEach(el => el.disabled = true);
-            submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>' +
-                (currentLang === 'en' ? ' Sending...' : ' Odesílám...');
-
-            // Remove any existing status message
-            const existingMsg = contactForm.parentElement.querySelector('.form-status-message');
-            if (existingMsg) existingMsg.remove();
-
-            try {
-                const formData = new FormData(contactForm);
-                const urlEncoded = new URLSearchParams(formData).toString();
-                const response = await fetch(contactForm.action, {
-                    method: 'POST',
-                    body: urlEncoded,
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/x-www-form-urlencoded'
-                    }
-                });
-
-                const msgEl = document.createElement('div');
-                msgEl.className = 'form-status-message text-center mt-4 p-3';
-                msgEl.style.borderRadius = '0';
-                msgEl.style.animation = 'fadeIn 0.5s ease forwards';
-
-                if (response.ok) {
-                    msgEl.style.background = 'linear-gradient(135deg, rgba(34,197,94,0.15), rgba(22,163,74,0.15))';
-                    msgEl.style.border = '1px solid rgba(34,197,94,0.3)';
-                    msgEl.style.color = 'var(--text-primary)';
-                    msgEl.innerHTML = '<i class="fa-solid fa-circle-check me-2" style="color: #22c55e;"></i>' +
-                        (currentLang === 'en' ? 'Message sent successfully! I\'ll get back to you soon.' : 'Zpráva byla úspěšně odeslána! Brzy se vám ozvu.');
-                    contactForm.reset();
-                } else {
-                    msgEl.style.background = 'linear-gradient(135deg, rgba(239,68,68,0.15), rgba(220,38,38,0.15))';
-                    msgEl.style.border = '1px solid rgba(239,68,68,0.3)';
-                    msgEl.style.color = 'var(--text-primary)';
-                    msgEl.innerHTML = '<i class="fa-solid fa-circle-xmark me-2" style="color: #ef4444;"></i>' +
-                        (currentLang === 'en' ? 'Something went wrong. Please try again or contact me directly.' : 'Něco se pokazilo. Zkuste to znovu nebo mě kontaktujte přímo.');
-                }
-
-                contactForm.parentElement.insertBefore(msgEl, contactForm.nextSibling);
-
-                // Auto-remove after 8 seconds
-                setTimeout(() => {
-                    if (msgEl.parentElement) {
-                        msgEl.style.opacity = '0';
-                        msgEl.style.transition = 'opacity 0.5s ease';
-                        setTimeout(() => msgEl.remove(), 500);
-                    }
-                }, 8000);
-
-            } catch (err) {
-                const msgEl = document.createElement('div');
-                msgEl.className = 'form-status-message text-center mt-4 p-3';
-                msgEl.style.borderRadius = '0';
-                msgEl.style.background = 'linear-gradient(135deg, rgba(239,68,68,0.15), rgba(220,38,38,0.15))';
-                msgEl.style.border = '1px solid rgba(239,68,68,0.3)';
-                msgEl.style.color = 'var(--text-primary)';
-                msgEl.style.animation = 'fadeIn 0.5s ease forwards';
-                msgEl.innerHTML = '<i class="fa-solid fa-circle-xmark me-2" style="color: #ef4444;"></i>' +
-                    (currentLang === 'en' ? 'Network error. Please check your connection and try again.' : 'Chyba sítě. Zkontrolujte připojení a zkuste to znovu.');
-                contactForm.parentElement.insertBefore(msgEl, contactForm.nextSibling);
-            } finally {
-                inputs.forEach(el => el.disabled = false);
-                submitBtn.innerHTML = originalBtnHTML;
-            }
-        });
-    }
 });
 
 function applyTheme(theme) {
+    document.documentElement.classList.toggle('light-preload', theme === 'light');
     if (theme === 'light') {
         document.body.classList.add('light-mode');
     } else {
