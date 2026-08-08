@@ -1,58 +1,48 @@
-# Alfons Walker's Personal Website
+# Alfons Walker — personal website
 
-A bold, impactful personal website built with **Flask** and **Google App Engine**.
-The site showcases my projects, skills, certificates, and journey in the world of coding and electronics.
+A bilingual Czech/English portfolio built with Flask and deployed on Google App Engine.
 
-## Features
+## What is included
 
-*   **Dual UI Design:** The website features two distinct designs that can be toggled via a floating button:
-    *   **Default UI:** A dark, modern theme with blue accents and glassmorphism effects.
-    *   **Minimal UI:** A clean, white, Swiss-style minimalist design with bold typography.
-*   **Interactive Timeline:** A chronological overview of my education, courses, and activities.
-*   **Games:** Three playable browser games:
-    *   **Flappy Bird Clone**
-    *   **Pong**
-    *   **Snake**
-*   **Certificates:** A gallery of earned certificates with modal previews.
-*   **Responsive:** Fully optimized for desktop and mobile devices.
+- Responsive portfolio with projects, certificates, contact details, and a Formspree contact form
+- Persistent dark/light theme and Czech/English language controls
+- Keyboard-accessible responsive navigation
+- A second page covering school information, brand assets, a logo slideshow, gallery lightbox, and PDF manual
+- App Engine static-file caching and warmup support
 
-## Project Structure (App Engine)
+## Local development
 
+Requirements: Python 3.11 or newer.
+
+```powershell
+.\scripts\run-server.ps1
 ```
+
+Then open [http://localhost:8080](http://localhost:8080).
+
+The script creates or reuses `venv`, installs `requirements.txt`, and starts the Flask development server.
+
+## Project structure
+
+```text
 website/
-├── main.py             # Flask application entry point
-├── app.yaml            # App Engine configuration
-├── templates/          # HTML Templates
-│   ├── index.html      # Default design
-│   ├── minimal.html    # Minimalist design
-│   └── games/          # Game HTML files
-├── static/             # Static Assets
-│   ├── css/            # Global Styles
-│   ├── js/             # Global Scripts
-│   ├── assets/         # Images, Certificates, Icons
-│   └── games/          # Game specific assets (css/js)
-└── old website/        # (Migrated and removed)
+├── main.py                  # Flask routes and response headers
+├── app.yaml                 # Google App Engine configuration
+├── requirements.txt
+├── scripts/                 # Local server and deployment helpers
+├── templates/
+│   ├── index.html           # Main portfolio
+│   └── logo-manual.html     # School and brand page
+└── static/
+    ├── assets/img/          # Local site and brand artwork
+    ├── css/                 # Shared and page-specific styles
+    └── js/                  # Shared and page-specific interactions
 ```
-
-## Local Development
-
-1.  **Prerequisites**: Python 3.11+ installed.
-2.  **Run the server**:
-    ```powershell
-    .\run-server.ps1
-    ```
-    This script will automatically:
-    - Create a virtual environment (`venv`) if it doesn't exist.
-    - Activate it.
-    - Install dependencies from `requirements.txt`.
-    - Start the Flask development server.
-
-3.  Open [http://localhost:8080](http://localhost:8080).
 
 ## Deployment
 
-Deploy to Google App Engine:
-
-```bash
-gcloud app deploy
+```powershell
+.\scripts\deploy.ps1
 ```
+
+Alternatively, deploy directly with `gcloud app deploy`.

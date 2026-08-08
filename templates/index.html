@@ -10,46 +10,174 @@
     <meta property="og:description" content="Nezávislý vývojář – moderní webové aplikace, software na míru a organizace tech eventů.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://alfonswalker.com">
-    <meta name="twitter:card" content="summary">
-    <link rel="icon" type="image/png" href="/static/assets/img/logo-icon.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="theme-color" content="#f0f4f8">
+    <link rel="icon" type="image/png" href="/static/assets/img/brand/logo-mark.png">
     <link rel="canonical" href="https://alfonswalker.com/">
-    <meta property="og:image" content="https://alfonswalker.com/static/assets/img/logo-main.png">
-    <script>if(localStorage.getItem('theme')!=='dark')document.documentElement.classList.add('light-preload');</script>
+    <meta property="og:image" content="https://alfonswalker.com/static/assets/img/brand/logo-horizontal.png">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "WebSite",
+                "@id": "https://alfonswalker.com/#website",
+                "url": "https://alfonswalker.com/",
+                "name": "Alfons Walker",
+                "inLanguage": ["cs", "en"],
+                "publisher": { "@id": "https://alfonswalker.com/#person" }
+            },
+            {
+                "@type": "ProfilePage",
+                "@id": "https://alfonswalker.com/#profile",
+                "url": "https://alfonswalker.com/",
+                "name": "Alfons Walker – osobní portfolio",
+                "description": "Portfolio nezávislého vývojáře se zaměřením na kybernetickou bezpečnost, webové aplikace a software na míru.",
+                "isPartOf": { "@id": "https://alfonswalker.com/#website" },
+                "mainEntity": { "@id": "https://alfonswalker.com/#person" },
+                "about": { "@id": "https://alfonswalker.com/#person" },
+                "inLanguage": "cs"
+            },
+            {
+                "@type": "Person",
+                "@id": "https://alfonswalker.com/#person",
+                "name": "Alfons Zac Walker",
+                "alternateName": "Alfons Walker",
+                "url": "https://alfonswalker.com/",
+                "logo": "https://alfonswalker.com/static/assets/img/brand/logo-mark.png",
+                "jobTitle": "Nezávislý vývojář",
+                "knowsAbout": [
+                    "Kybernetická bezpečnost",
+                    "Vývoj webových aplikací",
+                    "Software na míru",
+                    "Elektronika",
+                    "Unity"
+                ],
+                "sameAs": [
+                    "https://github.com/spitfire7033",
+                    "https://www.linkedin.com/in/alfons-walker-5a26b3403",
+                    "https://www.instagram.com/alfons_walk/"
+                ],
+                "hasCredential": [
+                    {
+                        "@type": "EducationalOccupationalCredential",
+                        "name": "Cambridge English (B2)",
+                        "credentialCategory": "Certificate"
+                    },
+                    {
+                        "@type": "EducationalOccupationalCredential",
+                        "name": "Elements of AI",
+                        "credentialCategory": "Certificate"
+                    }
+                ]
+            },
+            {
+                "@type": "ItemList",
+                "@id": "https://alfonswalker.com/#projects",
+                "name": "Projekty Alfonse Walkera",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "item": { "@id": "https://alfonswalker.com/#project-next-zone" }
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "item": { "@id": "https://alfonswalker.com/#project-frydryskova" }
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 3,
+                        "item": { "@id": "https://alfonswalker.com/#project-unity" }
+                    }
+                ]
+            },
+            {
+                "@type": "Event",
+                "@id": "https://alfonswalker.com/#project-next-zone",
+                "name": "Staň se politikem",
+                "startDate": "2026-02-02",
+                "location": {
+                    "@type": "Place",
+                    "name": "Next Zone"
+                },
+                "contributor": { "@id": "https://alfonswalker.com/#person" },
+                "description": "Politická soutěž zaměřená na kritické myšlení a komunikaci, na jejíž přípravě a organizaci se Alfons Walker podílel.",
+                "image": "https://alfonswalker.com/static/assets/img/IMG_20260419_215743_241_web.jpg",
+                "url": "https://alfonswalker.com/#projects",
+                "inLanguage": "cs"
+            },
+            {
+                "@type": "WebSite",
+                "@id": "https://alfonswalker.com/#project-frydryskova",
+                "name": "katerinafrydryskova.cz",
+                "url": "https://katerinafrydryskova.cz/",
+                "contributor": { "@id": "https://alfonswalker.com/#person" },
+                "description": "Webová stránka pro Mgr. Kateřinu Frydryškovou, na jejíž tvorbě Alfons Walker spolupracoval.",
+                "inLanguage": "cs"
+            },
+            {
+                "@type": "VideoGame",
+                "@id": "https://alfonswalker.com/#project-unity",
+                "name": "Simulátor Formule 1 v Unity",
+                "url": "https://spitfire7033.itch.io/simultor-formule-1-v-unity",
+                "creator": { "@id": "https://alfonswalker.com/#person" },
+                "description": "Závodní simulátor vytvořený v herním enginu Unity.",
+                "genre": "Racing simulation",
+                "inLanguage": "cs"
+            }
+        ]
+    }
+    </script>
+    <script>
+        (() => {
+            const root = document.documentElement;
+            try {
+                if (localStorage.getItem('theme') !== 'dark') root.classList.add('light-preload');
+            } catch (_) {
+                root.classList.add('light-preload');
+            }
+            if (window.matchMedia('(max-width: 768px)').matches) root.classList.add('mobile-nav-preload');
+        })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="/static/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous">
 </head>
 
-<body>
+<body class="portfolio-page">
     <a href="#main-content" class="skip-link" data-i18n="nav.skipToContent">Přeskočit na hlavní obsah</a>
     <!-- Top Controls: Language & Theme -->
     <div class="top-controls">
-        <button id="langToggle" class="control-btn shadow" aria-label="Switch language">
-            <i class="fa-solid fa-globe"></i> <span id="langText">English</span>
+        <button id="langToggle" class="control-btn shadow" type="button" aria-label="Přepnout do angličtiny">
+            <i class="fa-solid fa-globe" aria-hidden="true"></i> <span id="langText">English</span>
         </button>
-        <button id="themeToggle" class="control-btn shadow" aria-label="Toggle theme">
-            <i id="themeIcon" class="fa-solid fa-sun"></i> <span id="themeText">Světlý</span>
+        <button id="themeToggle" class="control-btn shadow" type="button" aria-label="Přepnout na tmavý režim">
+            <i id="themeIcon" class="fa-solid fa-moon" aria-hidden="true"></i> <span id="themeText">Tmavý</span>
         </button>
     </div>
 
     <!-- Side Navigation -->
-    <nav id="sideNav" class="side-nav">
-        <img src="/static/assets/img/logo-stacked.png" alt="Alfons Walker" class="side-nav-logo w-100 px-3 pb-3 border-bottom border-secondary mb-4">
+    <nav id="sideNav" class="side-nav" aria-label="Hlavní navigace">
+        <img src="/static/assets/img/brand/logo-mark.png" width="792" height="886" alt="Monogram Alfons Walker" class="side-nav-logo w-100 px-3 pb-3 border-bottom border-secondary mb-4" decoding="async">
         <a href="#about" class="side-nav-link text-decoration-none"><i class="fa-solid fa-user me-2"></i> <span data-i18n="nav.about">O mně</span></a>
         <a href="#projects" class="side-nav-link text-decoration-none"><i class="fa-solid fa-code me-2"></i> <span data-i18n="nav.projects">Projekty</span></a>
         <a href="#certificates" class="side-nav-link text-decoration-none"><i class="fa-solid fa-award me-2"></i> <span data-i18n="nav.certificates">Certifikáty</span></a>
         <a href="#contact" class="side-nav-link text-decoration-none"><i class="fa-solid fa-envelope me-2"></i> <span data-i18n="nav.contact">Kontakt</span></a>
-        <a href="/logo-manual" class="side-nav-link text-decoration-none"><i class="fa-solid fa-graduation-cap me-2"></i> <span data-i18n="nav.logoManual">Informatika zš Vitae a další info</span></a>
+        <a href="/logo-manual" class="side-nav-link text-decoration-none"><i class="fa-solid fa-graduation-cap me-2"></i> <span data-i18n="nav.logoManual">Informatika ZŠ Vitae a další info</span></a>
     </nav>
-    <button id="sidebarToggle" class="sidebar-toggle" title="Toggle sidebar" aria-label="Toggle Navigation">
-        <i class="fa-solid fa-chevron-right"></i>
+    <button id="sidebarToggle" class="sidebar-toggle" type="button" title="Skrýt navigaci" aria-label="Skrýt navigaci" aria-controls="sideNav" aria-expanded="true">
+        <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
     </button>
-    <div id="sidebarOverlay" class="sidebar-overlay"></div>
+    <div id="sidebarOverlay" class="sidebar-overlay" aria-hidden="true"></div>
 
     <header class="hero-section text-white text-center">
         <div class="hero-content container">
-            <img src="/static/assets/img/logo-main.png" alt="Alfons Walker Logo" class="hero-logo mb-4">
+            <img src="/static/assets/img/brand/logo-horizontal.png" width="1645" height="612" alt="Alfons Walker" class="hero-logo mb-4" fetchpriority="high">
             <h1 class="display-3 fw-bold mb-3 hero-title">Alfons Zac Walker</h1>
             <p class="lead fs-4 hero-subtitle" data-i18n="hero.subtitle">Kód • Kybernetická bezpečnost • Elektronika</p>
             <div class="hero-quote mt-4">
@@ -61,11 +189,8 @@
             </div>
             <div class="hero-cta mt-4">
                 <a href="/logo-manual" class="btn btn-primary btn-lg px-4 py-3 shadow" data-i18n="hero.cta">
-                    Informatika zš Vitae a další info <i class="fa-solid fa-graduation-cap ms-2"></i>
+                    Informatika ZŠ Vitae a další info <i class="fa-solid fa-graduation-cap ms-2"></i>
                 </a>
-                <div class="hero-terminal mt-3" data-i18n="hero.terminal">
-                    <span class="terminal-prompt">$</span> <span class="terminal-text">securing the digital world</span><span class="terminal-cursor">_</span>
-                </div>
             </div>
         </div>
         <div class="hero-blob hero-blob-1"></div>
@@ -97,9 +222,9 @@
                     <div class="card h-100">
                         <div class="row g-0 h-100 align-items-center">
                             <div class="col-md-4 text-center p-4">
-                                <img src="/static/assets/img/IMG_20260419_215743_241_web.jpg" alt="Organizace akce Next Zone" class="img-fluid" style="max-height: 250px; object-fit: contain;">
+                                <img src="/static/assets/img/IMG_20260419_215743_241_web.jpg" width="375" height="250" alt="Organizace akce Next Zone" class="img-fluid project-image" loading="lazy" decoding="async">
                             </div>
-                            <div class="col-md-8 px-2" style="border-left: 1px solid var(--card-border-left);">
+                            <div class="col-md-8 px-2 project-copy">
                                 <div class="card-body p-4">
                                     <h3 class="card-title mb-3" data-i18n="projects.politics.title">Organizace akce „Staň se politikem“ (Next Zone, 2. 2. 2026)</h3>
                                     <p class="card-text text-start fs-5 mb-0" data-i18n="projects.politics.description">
@@ -118,12 +243,12 @@
                 <div class="col-md-6">
                     <div class="card h-100">
                         <div class="card-body">
-                            <h5 class="card-title" data-i18n="projects.frydryskova.title">Webová stránka katerinafrydryskova.cz</h5>
+                            <h3 class="card-title" data-i18n="projects.frydryskova.title">Webová stránka katerinafrydryskova.cz</h3>
                             <p class="card-text" data-i18n="projects.frydryskova.description">
                                 Spolupracoval jsem na tvorbě webové stránky pro Mgr. Kateřinu Frydryškovou – terapeutku
                                 vztahu k jídlu, tělu a sobě.
                             </p>
-                            <a href="https://katerinafrydryskova.cz" target="_blank" class="btn btn-primary" data-i18n="projects.frydryskova.button">Navštívit web</a>
+                            <a href="https://katerinafrydryskova.cz" target="_blank" rel="noopener noreferrer" class="btn btn-primary" data-i18n="projects.frydryskova.button">Navštívit web</a>
                         </div>
                     </div>
                 </div>
@@ -132,14 +257,14 @@
                 <div class="col-md-6">
                     <div class="card h-100">
                         <div class="card-body">
-                            <h5 class="card-title" data-i18n="projects.unity.title">Závodní simulátor v Unity</h5>
+                            <h3 class="card-title" data-i18n="projects.unity.title">Závodní simulátor v Unity</h3>
                             <p class="card-text" data-i18n="projects.unity.description">
                                 Závodní hra vytvořená v herním enginu Unity.
                             </p>
                             <div class="d-flex flex-column align-items-start gap-2">
-                                <a href="https://drive.google.com/file/d/1n6aJ8EHBr3lagVISdy7HgCGqKWx5FObn/view?usp=sharing" target="_blank"
+                                <a href="https://drive.google.com/file/d/1n6aJ8EHBr3lagVISdy7HgCGqKWx5FObn/view?usp=sharing" target="_blank" rel="noopener noreferrer"
                                     class="btn btn-primary" data-i18n="projects.unity.docsButton">Zobrazit dokumentaci</a>
-                                <a href="https://spitfire7033.itch.io/simultor-formule-1-v-unity" target="_blank"
+                                <a href="https://spitfire7033.itch.io/simultor-formule-1-v-unity" target="_blank" rel="noopener noreferrer"
                                     class="text-decoration-none small text-secondary" data-i18n="projects.unity.gameLink"><i class="fa-solid fa-gamepad me-1"></i> Hrát hru (itch.io)</a>
                             </div>
                         </div>
@@ -155,7 +280,7 @@
                     <div class="card h-100">
                         <div class="card-body text-center d-flex flex-column justify-content-center">
                             <i class="fa-solid fa-language fa-3x mb-3 text-info"></i>
-                            <h5 class="card-title">Cambridge English (B2)</h5>
+                            <h3 class="card-title">Cambridge English (B2)</h3>
                             <p class="card-text" data-i18n="certificates.cambridge.description">Mezinárodně uznávaný certifikát prokazující pokročilou znalost anglického jazyka a plynulou komunikaci s klienty.</p>
                         </div>
                     </div>
@@ -164,7 +289,7 @@
                     <div class="card h-100">
                         <div class="card-body text-center d-flex flex-column justify-content-center">
                             <i class="fa-solid fa-robot fa-3x mb-3 text-info"></i>
-                            <h5 class="card-title">Elements of AI</h5>
+                            <h3 class="card-title">Elements of AI</h3>
                             <p class="card-text" data-i18n="certificates.elementsai.description">Odborné školení zaměřené na základy umělé inteligence, strojového učení a jejich praktické využití.</p>
                         </div>
                     </div>
@@ -174,48 +299,48 @@
 
         <section id="contact" class="mb-5 py-5">
             <h2 class="text-center" data-i18n="contact.title">Spojme se</h2>
-            <div class="card mx-auto shadow-lg" style="max-width: 800px; padding: 2rem;">
+            <div class="card contact-card mx-auto shadow-lg">
                 <div class="card-body">
                     <p class="lead text-center mb-5" data-i18n="contact.intro">
                         Máte zájem o spolupráci, potřebujete konzultaci, nebo si chcete jen popovídat o technologiích?<br>
                         Neváhejte mě kontaktovat.
                     </p>
 
-                    <form action="https://formspree.io/f/mdkqdadj" method="POST" class="mb-5">
+                    <form id="contactForm" action="https://formspree.io/f/mdkqdadj" method="POST" class="mb-5">
                         <div class="row g-4 mb-4">
                             <div class="col-md-6">
                                 <label for="contactName" class="text-muted ms-2 mb-2 small fw-bold" data-i18n="contact.form.name">Jméno</label>
-                                <input id="contactName" type="text" name="name" maxlength="120" autocomplete="name" class="form-control form-control-lg" placeholder="Vaše jméno" data-i18n-placeholder="contact.form.namePlaceholder" required>
+                                <input id="contactName" type="text" name="name" class="form-control form-control-lg" autocomplete="name" placeholder="Vaše jméno" data-i18n-placeholder="contact.form.namePlaceholder" required>
                             </div>
                             <div class="col-md-6">
                                 <label for="contactEmail" class="text-muted ms-2 mb-2 small fw-bold" data-i18n="contact.form.email">Email</label>
-                                <input id="contactEmail" type="email" name="email" maxlength="254" autocomplete="email" class="form-control form-control-lg" placeholder="Váš email" data-i18n-placeholder="contact.form.emailPlaceholder" required>
+                                <input id="contactEmail" type="email" name="email" class="form-control form-control-lg" autocomplete="email" inputmode="email" placeholder="Váš email" data-i18n-placeholder="contact.form.emailPlaceholder" required>
                             </div>
                         </div>
                         <div class="mb-4">
                             <label for="contactMessage" class="text-muted ms-2 mb-2 small fw-bold" data-i18n="contact.form.message">Zpráva</label>
-                            <textarea id="contactMessage" name="message" maxlength="5000" class="form-control form-control-lg" rows="6" placeholder="O čem budeme mluvit?" data-i18n-placeholder="contact.form.messagePlaceholder" required></textarea>
+                            <textarea id="contactMessage" name="message" class="form-control form-control-lg" rows="6" placeholder="O čem budeme mluvit?" data-i18n-placeholder="contact.form.messagePlaceholder" required></textarea>
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="btn btn-primary btn-lg w-50 py-3 mt-3"><span data-i18n="contact.form.submit">Odeslat zprávu</span> <i class="fa-solid fa-paper-plane ms-2"></i></button>
+                            <button type="submit" class="btn btn-primary btn-lg contact-submit py-3 mt-3"><span data-i18n="contact.form.submit">Odeslat zprávu</span> <i class="fa-solid fa-paper-plane ms-2" aria-hidden="true"></i></button>
                         </div>
                     </form>
 
                     <hr class="my-5 border-secondary">
                     
-                    <h4 class="text-center mb-4" data-i18n="contact.social.title">Najdete mě na sociálních sítích</h4>
+                    <h3 class="text-center mb-4" data-i18n="contact.social.title">Najdete mě na sociálních sítích</h3>
                     <div class="d-flex justify-content-center gap-4">
-                        <a href="https://www.linkedin.com/in/alfons-walker-5a26b3403" target="_blank" class="text-decoration-none" aria-label="LinkedIn Profile">
+                        <a href="https://www.linkedin.com/in/alfons-walker-5a26b3403" target="_blank" rel="noopener noreferrer" class="text-decoration-none" aria-label="Profil na LinkedInu">
                             <div class="social-icon d-flex align-items-center justify-content-center" style="width: 60px; height: 60px; filter: none !important;">
                                 <i class="fa-brands fa-linkedin-in fs-2 text-info"></i>
                             </div>
                         </a>
-                        <a href="https://github.com/spitfire7033" target="_blank" class="text-decoration-none" aria-label="GitHub Profile">
+                        <a href="https://github.com/spitfire7033" target="_blank" rel="noopener noreferrer" class="text-decoration-none" aria-label="Profil na GitHubu">
                             <div class="social-icon d-flex align-items-center justify-content-center" style="width: 60px; height: 60px; filter: none !important;">
                                 <i class="fa-brands fa-github fs-2" style="color: var(--github-icon-color);"></i>
                             </div>
                         </a>
-                        <a href="https://www.instagram.com/alfons_walk/" target="_blank" class="text-decoration-none" aria-label="Instagram Profile">
+                        <a href="https://www.instagram.com/alfons_walk/" target="_blank" rel="noopener noreferrer" class="text-decoration-none" aria-label="Profil na Instagramu">
                             <div class="social-icon d-flex align-items-center justify-content-center" style="width: 60px; height: 60px; filter: none !important;">
                                 <i class="fa-brands fa-instagram fs-2" style="color: #E1306C;"></i>
                             </div>
@@ -231,7 +356,6 @@
         <p>&copy; <span id="currentYear"></span> Alfons Walker</p>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <script src="/static/js/main.js"></script>
 </body>
 

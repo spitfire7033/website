@@ -4,15 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Informatika zš Vitae a další info - Alfons Walker</title>
+    <title>Informatika ZŠ Vitae a další info - Alfons Walker</title>
     <meta name="description" content="Logo manuál a branding Alfons Walker – vizuální identita, použití loga a designové prvky.">
     <meta property="og:title" content="Logo Manuál - Alfons Walker">
     <meta property="og:description" content="Logo manuál a branding Alfons Walker.">
     <meta property="og:type" content="website">
-    <link rel="icon" type="image/png" href="/static/assets/img/logo-icon.png">
+    <meta property="og:url" content="https://alfonswalker.com/logo-manual">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="theme-color" content="#f0f4f8">
+    <link rel="icon" type="image/png" href="/static/assets/img/brand/logo-mark.png">
     <link rel="canonical" href="https://alfonswalker.com/logo-manual">
-    <meta property="og:image" content="https://alfonswalker.com/static/assets/img/logo-main.png">
-    <script>if(localStorage.getItem('theme')!=='dark')document.documentElement.classList.add('light-preload');</script>
+    <meta property="og:image" content="https://alfonswalker.com/static/assets/img/brand/logo-horizontal.png">
+    <script>
+        (() => {
+            const root = document.documentElement;
+            try {
+                if (localStorage.getItem('theme') !== 'dark') root.classList.add('light-preload');
+            } catch (_) {
+                root.classList.add('light-preload');
+            }
+            if (window.matchMedia('(max-width: 768px)').matches) root.classList.add('mobile-nav-preload');
+        })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="/static/css/style.css">
     <link rel="stylesheet" href="/static/css/logo-manual.css">
@@ -20,24 +35,24 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous">
 </head>
 
-<body>
+<body class="manual-page">
     <a href="#main-content" class="skip-link" data-i18n="nav.skipToContent">Přeskočit na hlavní obsah</a>
     <!-- Top Controls -->
     <div class="top-controls">
         <a href="/" id="backBtn" class="control-btn shadow text-decoration-none">
             <i class="fa-solid fa-arrow-left"></i> <span data-i18n="logoManual.back">Zpět na portfolio</span>
         </a>
-        <button id="langToggle" class="control-btn shadow" aria-label="Switch language">
-            <i class="fa-solid fa-globe"></i> <span id="langText">English</span>
+        <button id="langToggle" class="control-btn shadow" type="button" aria-label="Přepnout do angličtiny">
+            <i class="fa-solid fa-globe" aria-hidden="true"></i> <span id="langText">English</span>
         </button>
-        <button id="themeToggle" class="control-btn shadow" aria-label="Toggle theme">
-            <i id="themeIcon" class="fa-solid fa-sun"></i> <span id="themeText">Světlý</span>
+        <button id="themeToggle" class="control-btn shadow" type="button" aria-label="Přepnout na tmavý režim">
+            <i id="themeIcon" class="fa-solid fa-moon" aria-hidden="true"></i> <span id="themeText">Tmavý</span>
         </button>
     </div>
 
     <!-- Side Navigation -->
-    <nav id="sideNav" class="side-nav">
-        <img src="/static/assets/img/logo-stacked.png" alt="Alfons Walker" class="side-nav-logo w-100 px-3 pb-3 border-bottom border-secondary mb-4">
+    <nav id="sideNav" class="side-nav" aria-label="Hlavní navigace">
+        <img src="/static/assets/img/brand/logo-mark.png" width="792" height="886" alt="Monogram Alfons Walker" class="side-nav-logo w-100 px-3 pb-3 border-bottom border-secondary mb-4" decoding="async">
         <a href="/" class="side-nav-link text-decoration-none"><i class="fa-solid fa-arrow-left me-2"></i> <span data-i18n="logoManual.back">Zpět na portfolio</span></a>
         <a href="#about-section" class="side-nav-link text-decoration-none"><i class="fa-solid fa-user me-2"></i> <span data-i18n="logoManual.navAbout">O mně</span></a>
         <a href="#brand-section" class="side-nav-link text-decoration-none"><i class="fa-solid fa-book-open me-2"></i> <span data-i18n="logoManual.navBrand">Moje značka</span></a>
@@ -45,10 +60,10 @@
         <a href="#gallery-section" class="side-nav-link text-decoration-none"><i class="fa-solid fa-palette me-2"></i> <span data-i18n="logoManual.galleryTitle">Designové prvky</span></a>
         <a href="#pdf-section" class="side-nav-link text-decoration-none"><i class="fa-solid fa-file-pdf me-2"></i> <span data-i18n="logoManual.pdfTitle">Logo manuál – PDF</span></a>
     </nav>
-    <button id="sidebarToggle" class="sidebar-toggle" title="Toggle sidebar" aria-label="Toggle Navigation">
-        <i class="fa-solid fa-chevron-right"></i>
+    <button id="sidebarToggle" class="sidebar-toggle" type="button" title="Skrýt navigaci" aria-label="Skrýt navigaci" aria-controls="sideNav" aria-expanded="true">
+        <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
     </button>
-    <div id="sidebarOverlay" class="sidebar-overlay"></div>
+    <div id="sidebarOverlay" class="sidebar-overlay" aria-hidden="true"></div>
 
     <!-- Hero Section -->
     <header class="logo-hero text-white text-center">
@@ -56,7 +71,7 @@
             <div class="logo-hero-badge">
                 <i class="fa-solid fa-graduation-cap"></i>
             </div>
-            <h1 class="display-4 fw-bold mb-3 hero-title" data-i18n="logoManual.heroTitle">Informatika zš Vitae a další info</h1>
+            <h1 class="display-4 fw-bold mb-3 hero-title" data-i18n="logoManual.heroTitle">Informatika ZŠ Vitae a další info</h1>
             <p class="lead hero-subtitle" data-i18n="logoManual.heroSubtitle">Vizuální identita & Školní projekty</p>
         </div>
         <div class="hero-blob hero-blob-1"></div>
@@ -81,7 +96,7 @@
                     </div>
 
                     <!-- 1. SSPS KB -->
-                    <div class="d-flex align-items-center gap-3 p-3 mb-3" style="background: var(--form-bg); border: 1px solid var(--border-color);">
+                    <div class="school-option d-flex align-items-center gap-3 p-3 mb-3">
                         <div class="fs-4 fw-bold text-secondary px-2">1.</div>
                         <div class="school-badge">
                             <i class="fa-solid fa-check-circle fs-4" style="color: #22c55e;"></i>
@@ -89,7 +104,7 @@
                         <div>
                             <span class="badge mb-1" style="background: linear-gradient(135deg, #22c55e, #16a34a); font-size: 0.7rem;" data-i18n="logoManual.accepted">PŘIJAT</span>
                             <h5 class="mb-1" style="color: var(--card-title-color);">
-                                <a href="https://ssps.cz" target="_blank" class="text-decoration-none" style="color: var(--card-title-color);">
+                                <a href="https://ssps.cz" target="_blank" rel="noopener noreferrer" class="text-decoration-none" style="color: var(--card-title-color);">
                                     <span data-i18n="logoManual.school1">Smíchovská střední průmyslová škola</span> <i class="fa-solid fa-up-right-from-square" style="font-size: 0.7rem;"></i>
                                 </a>
                             </h5>
@@ -98,7 +113,7 @@
                     </div>
 
                     <!-- 2. SSPS IT -->
-                    <div class="d-flex align-items-center gap-3 p-3 mb-3" style="background: var(--form-bg); border: 1px solid var(--border-color);">
+                    <div class="school-option d-flex align-items-center gap-3 p-3 mb-3">
                         <div class="fs-4 fw-bold text-secondary px-2">2.</div>
                         <div class="school-badge">
                             <i class="fa-solid fa-check-circle fs-4" style="color: #3b82f6;"></i>
@@ -106,7 +121,7 @@
                         <div>
                             <span class="badge mb-1" style="background: linear-gradient(135deg, #3b82f6, #1d4ed8); font-size: 0.7rem;" data-i18n="logoManual.acceptedPriority">PŘIJAT (VYŠŠÍ PRIORITA)</span>
                             <h5 class="mb-1" style="color: var(--card-title-color);">
-                                <a href="https://ssps.cz" target="_blank" class="text-decoration-none" style="color: var(--card-title-color);">
+                                <a href="https://ssps.cz" target="_blank" rel="noopener noreferrer" class="text-decoration-none" style="color: var(--card-title-color);">
                                     <span data-i18n="logoManual.school2">Smíchovská střední průmyslová škola</span> <i class="fa-solid fa-up-right-from-square" style="font-size: 0.7rem;"></i>
                                 </a>
                             </h5>
@@ -115,7 +130,7 @@
                     </div>
 
                     <!-- 3. Weilova IT -->
-                    <div class="d-flex align-items-center gap-3 p-3" style="background: var(--form-bg); border: 1px solid var(--border-color);">
+                    <div class="school-option d-flex align-items-center gap-3 p-3">
                         <div class="fs-4 fw-bold text-secondary px-2">3.</div>
                         <div class="school-badge">
                             <i class="fa-solid fa-check-circle fs-4" style="color: #3b82f6;"></i>
@@ -123,7 +138,7 @@
                         <div>
                             <span class="badge mb-1" style="background: linear-gradient(135deg, #3b82f6, #1d4ed8); font-size: 0.7rem;" data-i18n="logoManual.acceptedPriority">PŘIJAT (VYŠŠÍ PRIORITA)</span>
                             <h5 class="mb-1" style="color: var(--card-title-color);">
-                                <a href="https://www.skolahostivar.cz/" target="_blank" class="text-decoration-none" style="color: var(--card-title-color);">
+                                <a href="https://www.skolahostivar.cz/" target="_blank" rel="noopener noreferrer" class="text-decoration-none" style="color: var(--card-title-color);">
                                     <span data-i18n="logoManual.school3">Střední odborná škola automobilní a informatiky (Weilova)</span> <i class="fa-solid fa-up-right-from-square" style="font-size: 0.7rem;"></i>
                                 </a>
                             </h5>
@@ -180,9 +195,9 @@
             <div class="card mx-auto shadow-sm mb-4" style="max-width: 800px;">
                 <div class="row g-0 align-items-center">
                     <div class="col-md-4 text-center p-4">
-                        <img src="/static/assets/img/logo-icon.png" alt="Alfons Walker Logo" class="img-fluid brand-logo-card">
+                        <img src="/static/assets/img/brand/logo-horizontal.png" width="1645" height="612" alt="Alfons Walker" class="img-fluid brand-story-logo" loading="lazy" decoding="async">
                     </div>
-                    <div class="col-md-8" style="border-left: 1px solid var(--card-border-left);">
+                    <div class="col-md-8 manual-copy">
                         <div class="card-body p-4">
                             <h4 class="card-title mb-3" data-i18n="brand.storyTitle"><i class="fa-solid fa-book-open me-2" style="color: var(--accent-color);"></i> Příběh mého loga</h4>
                             <p class="card-text" data-i18n="brand.storyText">
@@ -204,24 +219,24 @@
             <h2 class="text-center" data-i18n="logoManual.slideshowTitle">Varianty loga</h2>
             <div class="slideshow-wrapper mx-auto">
                 <div class="slideshow-container">
-                    <img src="/static/assets/img/logo-main.png" alt="Alfons Walker Logo Varianta 1" class="slide active">
-                    <img src="/static/assets/img/logo-stacked.png" alt="Alfons Walker Logo Varianta 2" class="slide">
-                    <img src="/static/assets/img/logo-icon.png" alt="Alfons Walker Logo Varianta 3" class="slide">
+                    <img src="/static/assets/img/brand/logo-horizontal.png" width="1645" height="612" alt="Alfons Walker – horizontální logo" class="slide active" aria-hidden="false">
+                    <img src="/static/assets/img/brand/logo-stacked.png" width="839" height="902" alt="Alfons Walker – vertikální logo" class="slide" aria-hidden="true" loading="lazy">
+                    <img src="/static/assets/img/brand/logo-mark.png" width="792" height="886" alt="Alfons Walker – monogram" class="slide" aria-hidden="true" loading="lazy">
 
                     <!-- Slide Counter -->
                     <div class="slide-counter">
                         <span id="slideCurrentNum">1</span> / <span id="slideTotalNum">3</span>
                     </div>
+                    <button id="playPauseBtn" class="slide-btn slideshow-toggle" type="button" aria-label="Pozastavit prezentaci">
+                        <i class="fa-solid fa-pause"></i>
+                    </button>
 
                     <!-- Controls -->
                     <div class="slideshow-controls">
-                        <button id="prevBtn" class="slide-btn" aria-label="Previous slide">
+                        <button id="prevBtn" class="slide-btn" type="button" aria-label="Předchozí snímek">
                             <i class="fa-solid fa-chevron-left"></i>
                         </button>
-                        <button id="playPauseBtn" class="slide-btn" aria-label="Pause slideshow" style="opacity: 0.5;">
-                            <i class="fa-solid fa-pause"></i>
-                        </button>
-                        <button id="nextBtn" class="slide-btn" aria-label="Next slide">
+                        <button id="nextBtn" class="slide-btn" type="button" aria-label="Další snímek">
                             <i class="fa-solid fa-chevron-right"></i>
                         </button>
                     </div>
@@ -229,41 +244,35 @@
 
                 <!-- Dot Indicators -->
                 <div class="slide-dots">
-                    <button class="dot active" data-index="0" aria-label="Go to slide 1"></button>
-                    <button class="dot" data-index="1" aria-label="Go to slide 2"></button>
-                    <button class="dot" data-index="2" aria-label="Go to slide 3"></button>
+                    <button class="dot active" type="button" data-index="0" aria-label="Přejít na snímek 1" aria-current="true"></button>
+                    <button class="dot" type="button" data-index="1" aria-label="Přejít na snímek 2"></button>
+                    <button class="dot" type="button" data-index="2" aria-label="Přejít na snímek 3"></button>
                 </div>
             </div>
         </section>
 
         <!-- Gallery Section -->
         <section id="gallery-section" class="mb-5">
-            <h2 class="text-center" data-i18n="logoManual.galleryTitle">Designové prvky</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="https://i.ibb.co/4ZVf6GHw/1.png" alt="Design element 1" loading="lazy">
+            <h2 class="text-center" data-i18n="logoManual.galleryTitle">Galerie loga</h2>
+            <div class="gallery-grid logo-gallery-grid">
+                <button class="gallery-item logo-gallery-item logo-gallery-item--wide" type="button" aria-label="Zvětšit horizontální logo">
+                    <img src="/static/assets/img/brand/logo-horizontal.png" width="1645" height="612" alt="Horizontální logo Alfons Walker" loading="lazy" decoding="async">
                     <div class="gallery-overlay">
                         <i class="fa-solid fa-expand"></i>
                     </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://i.ibb.co/hF0fMhhJ/2.png" alt="Design element 2" loading="lazy">
+                </button>
+                <button class="gallery-item logo-gallery-item" type="button" aria-label="Zvětšit vertikální logo">
+                    <img src="/static/assets/img/brand/logo-stacked.png" width="839" height="902" alt="Vertikální logo Alfons Walker" loading="lazy" decoding="async">
                     <div class="gallery-overlay">
                         <i class="fa-solid fa-expand"></i>
                     </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://i.ibb.co/1YRz0YH0/3.png" alt="Design element 3" loading="lazy">
+                </button>
+                <button class="gallery-item logo-gallery-item" type="button" aria-label="Zvětšit monogram">
+                    <img src="/static/assets/img/brand/logo-mark.png" width="792" height="886" alt="Monogram Alfons Walker" loading="lazy" decoding="async">
                     <div class="gallery-overlay">
                         <i class="fa-solid fa-expand"></i>
                     </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://i.ibb.co/WWVwJj5v/4.png" alt="Design element 4" loading="lazy">
-                    <div class="gallery-overlay">
-                        <i class="fa-solid fa-expand"></i>
-                    </div>
-                </div>
+                </button>
             </div>
         </section>
 
@@ -276,7 +285,7 @@
                         <i class="fa-solid fa-file-pdf"></i>
                         <span>Logo_Manual_AlfonsWalker.pdf</span>
                     </div>
-                    <a href="https://drive.google.com/file/d/1cBRwfdf0AfriNK-J3qjUFecxH8k8mYGG/view" target="_blank" class="pdf-open-btn" data-i18n="logoManual.pdfOpen">
+                    <a href="https://drive.google.com/file/d/1cBRwfdf0AfriNK-J3qjUFecxH8k8mYGG/view" target="_blank" rel="noopener noreferrer" class="pdf-open-btn" data-i18n="logoManual.pdfOpen">
                         <i class="fa-solid fa-up-right-from-square"></i> Otevřít
                     </a>
                 </div>
@@ -284,6 +293,7 @@
                     class="pdf-embed"
                     src="https://drive.google.com/file/d/1cBRwfdf0AfriNK-J3qjUFecxH8k8mYGG/preview"
                     title="Logo Manual PDF"
+                    loading="lazy"
                     allow="autoplay"
                     allowfullscreen
                 ></iframe>
@@ -293,17 +303,17 @@
     </main>
 
     <!-- Lightbox -->
-    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
-        <button class="lightbox-close" id="lightboxClose" aria-label="Close lightbox">
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Prohlížeč obrázků" aria-hidden="true" inert>
+        <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Zavřít prohlížeč obrázků">
             <i class="fa-solid fa-xmark"></i>
         </button>
-        <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous image">
+        <button class="lightbox-nav lightbox-prev" id="lightboxPrev" type="button" aria-label="Předchozí obrázek">
             <i class="fa-solid fa-chevron-left"></i>
         </button>
         <div class="lightbox-content">
-            <img id="lightbox-img" src="" alt="">
+            <img id="lightbox-img" alt="">
         </div>
-        <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next image">
+        <button class="lightbox-nav lightbox-next" id="lightboxNext" type="button" aria-label="Další obrázek">
             <i class="fa-solid fa-chevron-right"></i>
         </button>
         <div class="lightbox-counter">
@@ -315,7 +325,6 @@
         <p>&copy; <span id="currentYear"></span> Alfons Walker</p>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <script src="/static/js/main.js"></script>
     <script src="/static/js/logo-manual.js"></script>
 </body>

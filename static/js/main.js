@@ -12,7 +12,6 @@ const translations = {
         // Hero
         "hero.subtitle": "Code • Cybersecurity • Electronics",
         "hero.quote": '<i class="fa-solid fa-quote-left quote-icon"></i> Every system has a weakness. My job is to find it first. <i class="fa-solid fa-quote-right quote-icon"></i>',
-        "hero.terminal": '<span class="terminal-prompt">$</span> <span class="terminal-text">securing the digital world</span><span class="terminal-cursor">_</span>',
         "hero.cta": 'Informatics ZŠ Vitae & Other Info <i class="fa-solid fa-graduation-cap ms-2"></i>',
 
         // About
@@ -87,7 +86,7 @@ const translations = {
         "logoManual.navAbout": "About Me",
         "logoManual.navBrand": "My Brand",
         "logoManual.slideshowTitle": "Logo Variants",
-        "logoManual.galleryTitle": "Design Elements",
+        "logoManual.galleryTitle": "Logo Gallery",
         "logoManual.pdfTitle": "Logo Manual – PDF",
         "logoManual.pdfOpen": '<i class="fa-solid fa-up-right-from-square"></i> Open',
         "logoManual.heroTitle": "Informatics ZŠ Vitae & Other Info",
@@ -95,129 +94,243 @@ const translations = {
     }
 };
 
-let currentLang = localStorage.getItem('lang') || 'cz';
-let currentTheme = localStorage.getItem('theme') || 'light';
+function readPreference(key, fallback) {
+    try {
+        return localStorage.getItem(key) || fallback;
+    } catch (_) {
+        return fallback;
+    }
+}
+
+function savePreference(key, value) {
+    try {
+        localStorage.setItem(key, value);
+    } catch (_) {}
+}
+
+let currentLang = readPreference('lang', 'cz') === 'en' ? 'en' : 'cz';
+let currentTheme = readPreference('theme', 'light') === 'dark' ? 'dark' : 'light';
 
 document.addEventListener("DOMContentLoaded", () => {
-    // Store original Czech content for all translatable elements
     document.querySelectorAll("[data-i18n]").forEach(el => {
         el.dataset.czText = el.innerHTML.trim();
     });
 
     document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
-        el.dataset.czPlaceholder = el.getAttribute('placeholder');
+        el.dataset.czPlaceholder = el.getAttribute('placeholder') || '';
     });
 
-    // Apply saved language preference
-    if (currentLang === 'en') {
-        updateLanguage('en');
-    }
-
-    // Apply saved theme preference
+    updateLanguage(currentLang);
     applyTheme(currentTheme);
     updateToggleUI(currentLang);
 
-    // Set dynamic footer year
     const yearEl = document.getElementById('currentYear');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-    // Language toggle click handler
     const langToggle = document.getElementById("langToggle");
     if (langToggle) {
         langToggle.addEventListener("click", () => {
             currentLang = currentLang === 'cz' ? 'en' : 'cz';
-            localStorage.setItem('lang', currentLang);
+            savePreference('lang', currentLang);
             updateLanguage(currentLang);
             updateToggleUI(currentLang);
         });
     }
 
-    // Theme toggle click handler
     const themeToggle = document.getElementById("themeToggle");
     if (themeToggle) {
         themeToggle.addEventListener("click", () => {
             currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            localStorage.setItem('theme', currentTheme);
+            savePreference('theme', currentTheme);
             applyTheme(currentTheme);
             updateToggleUI(currentLang);
         });
     }
 
-    // Sidebar toggle logic
     const sidebarToggle = document.getElementById('sidebarToggle');
     const sideNav = document.getElementById('sideNav');
     const sidebarOverlay = document.getElementById('sidebarOverlay');
-    const body = document.body;
+    const mobileQuery = window.matchMedia('(max-width: 768px)');
 
-    function toggleSidebar() {
+    function updateSidebarLabel(isExpanded) {
+        if (!sidebarToggle) return;
+        const label = currentLang === 'en'
+            ? (isExpanded ? 'Hide navigation' : 'Show navigation')
+            : (isExpanded ? 'Skrýt navigaci' : 'Zobrazit navigaci');
+        sidebarToggle.setAttribute('aria-label', label);
+        sidebarToggle.title = label;
+    }
+
+    function setSidebar(collapsed, moveFocus = false) {
         if (!sideNav || !sidebarToggle) return;
-        const isCollapsed = sideNav.classList.toggle('collapsed');
-        sidebarToggle.classList.toggle('collapsed', isCollapsed);
-        sidebarToggle.classList.toggle('nav-open', !isCollapsed);
-        body.classList.toggle('sidebar-collapsed', isCollapsed);
-        if (sidebarOverlay) sidebarOverlay.classList.toggle('active', !isCollapsed);
-    }
+        const isExpanded = !collapsed;
+        const isMobile = mobileQuery.matches;
 
-    if (sidebarToggle) {
-        sidebarToggle.addEventListener('click', toggleSidebar);
-    }
+        sideNav.classList.toggle('collapsed', collapsed);
+        sideNav.setAttribute('aria-hidden', String(collapsed));
+        sideNav.inert = collapsed;
+        sidebarToggle.classList.toggle('collapsed', collapsed);
+        sidebarToggle.classList.toggle('nav-open', isMobile && isExpanded);
+        sidebarToggle.setAttribute('aria-expanded', String(isExpanded));
+        document.body.classList.toggle('sidebar-collapsed', collapsed);
+        document.body.classList.toggle('nav-open', isMobile && isExpanded);
+        if (sidebarOverlay) sidebarOverlay.classList.toggle('active', isMobile && isExpanded);
+        updateSidebarLabel(isExpanded);
 
-    if (sidebarOverlay) {
-        sidebarOverlay.addEventListener('click', toggleSidebar);
-    }
-
-    // Close sidebar on link click (mobile)
-    const sideNavLinks = document.querySelectorAll('.side-nav-link');
-    sideNavLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            if (window.innerWidth <= 768 && sideNav && !sideNav.classList.contains('collapsed')) {
-                toggleSidebar();
-            }
-        });
-    });
-
-    // Responsive sidebar handling
-    let isMobile = window.innerWidth <= 768;
-
-    if (isMobile && sideNav && sidebarToggle) {
-        sideNav.classList.add('collapsed');
-        sidebarToggle.classList.add('collapsed');
-        body.classList.add('sidebar-collapsed');
-    }
-
-    window.addEventListener('resize', () => {
-        const currentlyMobile = window.innerWidth <= 768;
-        if (currentlyMobile !== isMobile) {
-            isMobile = currentlyMobile;
-            if (!sideNav || !sidebarToggle) return;
-            
-            if (isMobile) {
-                // Transitioning to mobile: collapse sidebar
-                sideNav.classList.add('collapsed');
-                sidebarToggle.classList.add('collapsed');
-                sidebarToggle.classList.remove('nav-open');
-                body.classList.add('sidebar-collapsed');
-                if (sidebarOverlay) sidebarOverlay.classList.remove('active');
+        if (moveFocus) {
+            if (isExpanded) {
+                window.requestAnimationFrame(() => sideNav.querySelector('a')?.focus());
             } else {
-                // Transitioning to desktop: open sidebar
-                sideNav.classList.remove('collapsed');
-                sidebarToggle.classList.remove('collapsed');
-                sidebarToggle.classList.remove('nav-open');
-                body.classList.remove('sidebar-collapsed');
-                if (sidebarOverlay) sidebarOverlay.classList.remove('active');
+                sidebarToggle.focus();
             }
         }
-    });
+    }
 
+    if (sideNav && sidebarToggle) {
+        setSidebar(mobileQuery.matches);
+        document.documentElement.classList.remove('mobile-nav-preload');
+
+        sidebarToggle.addEventListener('click', () => {
+            setSidebar(!sideNav.classList.contains('collapsed'), true);
+        });
+
+        sidebarOverlay?.addEventListener('click', () => setSidebar(true, true));
+
+        sideNav.querySelectorAll('.side-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                if (mobileQuery.matches) setSidebar(true);
+            });
+        });
+
+        const sectionLinks = Array.from(sideNav.querySelectorAll('.side-nav-link[href^="#"]'));
+        const trackedSections = sectionLinks
+            .map(link => document.querySelector(link.getAttribute('href')))
+            .filter(Boolean);
+        let scrollSpyFrame;
+
+        function updateActiveSection() {
+            scrollSpyFrame = undefined;
+            if (!trackedSections.length) return;
+
+            const marker = Math.min(window.innerHeight * 0.34, 260);
+            let activeSection = null;
+
+            trackedSections.forEach(section => {
+                if (section.getBoundingClientRect().top <= marker) activeSection = section;
+            });
+
+            if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) {
+                activeSection = trackedSections[trackedSections.length - 1];
+            }
+
+            sectionLinks.forEach(link => {
+                const isActive = activeSection && link.getAttribute('href') === `#${activeSection.id}`;
+                link.classList.toggle('active', Boolean(isActive));
+                if (isActive) {
+                    link.setAttribute('aria-current', 'location');
+                } else {
+                    link.removeAttribute('aria-current');
+                }
+            });
+        }
+
+        function requestScrollSpyUpdate() {
+            if (scrollSpyFrame) return;
+            scrollSpyFrame = window.requestAnimationFrame(updateActiveSection);
+        }
+
+        updateActiveSection();
+        window.addEventListener('scroll', requestScrollSpyUpdate, { passive: true });
+        window.addEventListener('resize', requestScrollSpyUpdate);
+
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape' && mobileQuery.matches && !sideNav.classList.contains('collapsed')) {
+                setSidebar(true, true);
+            }
+        });
+
+        const handleBreakpointChange = event => setSidebar(event.matches);
+        if (mobileQuery.addEventListener) {
+            mobileQuery.addEventListener('change', handleBreakpointChange);
+        } else {
+            mobileQuery.addListener(handleBreakpointChange);
+        }
+
+        document.addEventListener('languagechange', () => {
+            updateSidebarLabel(!sideNav.classList.contains('collapsed'));
+        });
+    } else {
+        document.documentElement.classList.remove('mobile-nav-preload');
+    }
+
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', async event => {
+            event.preventDefault();
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            if (!submitBtn) return;
+
+            const originalBtnHTML = submitBtn.innerHTML;
+            const controls = contactForm.querySelectorAll('input, textarea, button');
+            contactForm.parentElement.querySelector('.form-status-message')?.remove();
+            controls.forEach(el => { el.disabled = true; });
+            submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" aria-hidden="true"></span>' +
+                (currentLang === 'en' ? 'Sending…' : 'Odesílám…');
+
+            function showStatus(kind, text) {
+                const message = document.createElement('div');
+                message.className = `form-status-message form-status-message--${kind} text-center mt-4 p-3`;
+                message.setAttribute('role', kind === 'success' ? 'status' : 'alert');
+                message.setAttribute('aria-live', kind === 'success' ? 'polite' : 'assertive');
+
+                const icon = document.createElement('i');
+                icon.className = `fa-solid ${kind === 'success' ? 'fa-circle-check' : 'fa-circle-xmark'} me-2`;
+                icon.style.color = kind === 'success' ? '#22c55e' : '#ef4444';
+                icon.setAttribute('aria-hidden', 'true');
+                message.append(icon, document.createTextNode(text));
+                contactForm.insertAdjacentElement('afterend', message);
+            }
+
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: new URLSearchParams(new FormData(contactForm)),
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    }
+                });
+
+                if (response.ok) {
+                    showStatus('success', currentLang === 'en'
+                        ? 'Message sent successfully! I’ll get back to you soon.'
+                        : 'Zpráva byla úspěšně odeslána! Brzy se vám ozvu.');
+                    contactForm.reset();
+                } else {
+                    showStatus('error', currentLang === 'en'
+                        ? 'Something went wrong. Please try again or contact me directly.'
+                        : 'Něco se pokazilo. Zkuste to znovu nebo mě kontaktujte přímo.');
+                }
+            } catch (_) {
+                showStatus('error', currentLang === 'en'
+                    ? 'Network error. Please check your connection and try again.'
+                    : 'Chyba sítě. Zkontrolujte připojení a zkuste to znovu.');
+            } finally {
+                controls.forEach(el => { el.disabled = false; });
+                submitBtn.innerHTML = originalBtnHTML;
+                updateLanguage(currentLang);
+            }
+        });
+    }
 });
 
 function applyTheme(theme) {
-    document.documentElement.classList.toggle('light-preload', theme === 'light');
-    if (theme === 'light') {
-        document.body.classList.add('light-mode');
-    } else {
-        document.body.classList.remove('light-mode');
-    }
+    const isLight = theme === 'light';
+    document.body.classList.toggle('light-mode', isLight);
+    document.documentElement.classList.remove('light-preload');
+    document.documentElement.style.colorScheme = isLight ? 'light' : 'dark';
+    const themeColor = document.querySelector('meta[name="theme-color"]');
+    if (themeColor) themeColor.content = isLight ? '#f0f4f8' : '#0b0f19';
 }
 
 function updateLanguage(lang) {
@@ -243,6 +356,7 @@ function updateLanguage(lang) {
 
     // Update html lang attribute
     document.documentElement.lang = lang === 'en' ? 'en' : 'cs';
+    document.dispatchEvent(new CustomEvent('languagechange', { detail: { lang } }));
 }
 
 function updateToggleUI(lang) {
@@ -253,9 +367,11 @@ function updateToggleUI(lang) {
     if (lang === 'cz') {
         langText.innerText = 'English';
         toggleBtn.title = 'Switch to English';
+        toggleBtn.setAttribute('aria-label', 'Přepnout do angličtiny');
     } else {
         langText.innerText = 'Čeština';
         toggleBtn.title = 'Přepnout do češtiny';
+        toggleBtn.setAttribute('aria-label', 'Switch to Czech');
     }
 
     // Update theme toggle UI
@@ -266,11 +382,15 @@ function updateToggleUI(lang) {
 
     if (currentTheme === 'dark') {
         themeIcon.className = 'fa-solid fa-sun';
+        themeIcon.setAttribute('aria-hidden', 'true');
         themeText.innerText = lang === 'cz' ? 'Světlý' : 'Light';
         themeToggle.title = lang === 'cz' ? 'Přepnout na světlý režim' : 'Switch to light mode';
+        themeToggle.setAttribute('aria-label', themeToggle.title);
     } else {
         themeIcon.className = 'fa-solid fa-moon';
+        themeIcon.setAttribute('aria-hidden', 'true');
         themeText.innerText = lang === 'cz' ? 'Tmavý' : 'Dark';
         themeToggle.title = lang === 'cz' ? 'Přepnout na tmavý režim' : 'Switch to dark mode';
+        themeToggle.setAttribute('aria-label', themeToggle.title);
     }
 }
