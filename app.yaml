@@ -7,7 +7,7 @@ handlers:
   - url: /static
     static_dir: static
     secure: always
-    expiration: "30d"
+    expiration: "1h"
 
   - url: /.*
     script: auto

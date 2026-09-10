@@ -12,7 +12,7 @@
     <meta property="og:url" content="https://alfonswalker.com/logo-manual">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="theme-color" content="#f0f4f8">
-    <link rel="icon" type="image/png" href="/static/assets/img/brand/logo-mark.png">
+    <link rel="icon" type="image/png" href="{{ static_asset('assets/img/brand/logo-mark.png') }}">
     <link rel="canonical" href="https://alfonswalker.com/logo-manual">
     <meta property="og:image" content="https://alfonswalker.com/static/assets/img/brand/logo-horizontal.png">
     <script>
@@ -29,8 +29,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <link rel="stylesheet" href="/static/css/style.css">
-    <link rel="stylesheet" href="/static/css/logo-manual.css">
+    <link rel="stylesheet" href="{{ static_asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ static_asset('css/logo-manual.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous">
 </head>
@@ -52,7 +52,9 @@
 
     <!-- Side Navigation -->
     <nav id="sideNav" class="side-nav" aria-label="Hlavní navigace">
-        <img src="/static/assets/img/brand/logo-mark.png" width="792" height="886" alt="Monogram Alfons Walker" class="side-nav-logo w-100 px-3 pb-3 border-bottom border-secondary mb-4" decoding="async">
+        <div class="side-nav-logo-wrap pb-3 border-bottom border-secondary mb-4">
+            <img src="{{ static_asset('assets/img/brand/logo-mark.png') }}" width="114" height="128" alt="Monogram Alfons Walker" class="side-nav-logo" decoding="async">
+        </div>
         <a href="/" class="side-nav-link text-decoration-none"><i class="fa-solid fa-arrow-left me-2"></i> <span data-i18n="logoManual.back">Zpět na portfolio</span></a>
         <a href="#about-section" class="side-nav-link text-decoration-none"><i class="fa-solid fa-user me-2"></i> <span data-i18n="logoManual.navAbout">O mně</span></a>
         <a href="#brand-section" class="side-nav-link text-decoration-none"><i class="fa-solid fa-book-open me-2"></i> <span data-i18n="logoManual.navBrand">Moje značka</span></a>
@@ -195,7 +197,7 @@
             <div class="card mx-auto shadow-sm mb-4" style="max-width: 800px;">
                 <div class="row g-0 align-items-center">
                     <div class="col-md-4 text-center p-4">
-                        <img src="/static/assets/img/brand/logo-horizontal.png" width="1645" height="612" alt="Alfons Walker" class="img-fluid brand-story-logo" loading="lazy" decoding="async">
+                        <img src="{{ static_asset('assets/img/brand/logo-horizontal.png') }}" width="1645" height="612" alt="Alfons Walker" class="img-fluid brand-story-logo" loading="lazy" decoding="async">
                     </div>
                     <div class="col-md-8 manual-copy">
                         <div class="card-body p-4">
@@ -219,9 +221,9 @@
             <h2 class="text-center" data-i18n="logoManual.slideshowTitle">Varianty loga</h2>
             <div class="slideshow-wrapper mx-auto">
                 <div class="slideshow-container">
-                    <img src="/static/assets/img/brand/logo-horizontal.png" width="1645" height="612" alt="Alfons Walker – horizontální logo" class="slide active" aria-hidden="false">
-                    <img src="/static/assets/img/brand/logo-stacked.png" width="839" height="902" alt="Alfons Walker – vertikální logo" class="slide" aria-hidden="true" loading="lazy">
-                    <img src="/static/assets/img/brand/logo-mark.png" width="792" height="886" alt="Alfons Walker – monogram" class="slide" aria-hidden="true" loading="lazy">
+                    <img src="{{ static_asset('assets/img/brand/logo-horizontal.png') }}" width="1645" height="612" alt="Alfons Walker – horizontální logo" class="slide active" aria-hidden="false">
+                    <img src="{{ static_asset('assets/img/brand/logo-stacked.png') }}" width="839" height="902" alt="Alfons Walker – vertikální logo" class="slide" aria-hidden="true" loading="lazy">
+                    <img src="{{ static_asset('assets/img/brand/logo-mark.png') }}" width="792" height="886" alt="Alfons Walker – monogram" class="slide" aria-hidden="true" loading="lazy">
 
                     <!-- Slide Counter -->
                     <div class="slide-counter">
@@ -256,19 +258,19 @@
             <h2 class="text-center" data-i18n="logoManual.galleryTitle">Galerie loga</h2>
             <div class="gallery-grid logo-gallery-grid">
                 <button class="gallery-item logo-gallery-item logo-gallery-item--wide" type="button" aria-label="Zvětšit horizontální logo">
-                    <img src="/static/assets/img/brand/logo-horizontal.png" width="1645" height="612" alt="Horizontální logo Alfons Walker" loading="lazy" decoding="async">
+                    <img src="{{ static_asset('assets/img/brand/logo-horizontal.png') }}" width="1645" height="612" alt="Horizontální logo Alfons Walker" loading="lazy" decoding="async">
                     <div class="gallery-overlay">
                         <i class="fa-solid fa-expand"></i>
                     </div>
                 </button>
                 <button class="gallery-item logo-gallery-item" type="button" aria-label="Zvětšit vertikální logo">
-                    <img src="/static/assets/img/brand/logo-stacked.png" width="839" height="902" alt="Vertikální logo Alfons Walker" loading="lazy" decoding="async">
+                    <img src="{{ static_asset('assets/img/brand/logo-stacked.png') }}" width="839" height="902" alt="Vertikální logo Alfons Walker" loading="lazy" decoding="async">
                     <div class="gallery-overlay">
                         <i class="fa-solid fa-expand"></i>
                     </div>
                 </button>
                 <button class="gallery-item logo-gallery-item" type="button" aria-label="Zvětšit monogram">
-                    <img src="/static/assets/img/brand/logo-mark.png" width="792" height="886" alt="Monogram Alfons Walker" loading="lazy" decoding="async">
+                    <img src="{{ static_asset('assets/img/brand/logo-mark.png') }}" width="792" height="886" alt="Monogram Alfons Walker" loading="lazy" decoding="async">
                     <div class="gallery-overlay">
                         <i class="fa-solid fa-expand"></i>
                     </div>
@@ -325,8 +327,8 @@
         <p>&copy; <span id="currentYear"></span> Alfons Walker</p>
     </footer>
 
-    <script src="/static/js/main.js"></script>
-    <script src="/static/js/logo-manual.js"></script>
+    <script src="{{ static_asset('js/main.js') }}"></script>
+    <script src="{{ static_asset('js/logo-manual.js') }}"></script>
 </body>
 
 </html>
