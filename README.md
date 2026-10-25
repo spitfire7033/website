@@ -1,14 +1,14 @@
 # Alfons Walker — personal website
 
-A bilingual Czech/English portfolio built with Flask and deployed on Google App Engine.
+A bilingual Czech/English client-focused portfolio built with Flask and deployed on Google App Engine.
 
 ## What is included
 
-- Responsive portfolio with projects, certificates, contact details, and a Formspree contact form
-- Persistent dark/light theme and Czech/English language controls
-- Keyboard-accessible responsive navigation
-- A second page covering school information, brand assets, a logo slideshow, gallery lightbox, and PDF manual
-- App Engine static-file caching and warmup support
+- Client-focused services, selected work (with a dedicated slot for in-progress client projects), collaboration process, credentials, and a compact brand/logo variants showcase
+- Server-rendered Czech (`/`) and English (`/en`) routes with `hreflang` SEO metadata, `sitemap.xml`, and `robots.txt`
+- Persistent dark/light theme and keyboard-accessible responsive side navigation
+- Formspree AJAX contact form with spam honeypot
+- App Engine static-file cache busting, security headers, and warmup support
 
 ## Local development
 
@@ -26,17 +26,17 @@ The script creates or reuses `venv`, installs `requirements.txt`, and starts the
 
 ```text
 website/
-├── main.py                  # Flask routes and response headers
+├── main.py                  # Flask routes, SEO endpoints, and security headers
+├── site_data.py             # Structured bilingual content and project entries
 ├── app.yaml                 # Google App Engine configuration
 ├── requirements.txt
 ├── scripts/                 # Local server and deployment helpers
 ├── templates/
-│   ├── index.html           # Main portfolio
-│   └── logo-manual.html     # School and brand page
+│   └── index.html           # Main portfolio template (CZ & EN)
 └── static/
-    ├── assets/img/          # Local site and brand artwork
-    ├── css/                 # Shared and page-specific styles
-    └── js/                  # Shared and page-specific interactions
+    ├── assets/img/          # Site and brand artwork
+    ├── css/                 # Site styles
+    └── js/                  # Theme, navigation, and contact form interactions
 ```
 
 ## Deployment

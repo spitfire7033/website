@@ -1,19 +1,23 @@
 <!DOCTYPE html>
-<html lang="cs">
+<html lang="{{ page.lang }}">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alfons Walker - Osobní Portfolio</title>
-    <meta name="description" content="Alfons Walker – nezávislý vývojář specializující se na moderní webové aplikace, software na míru a organizaci tech eventů. Portfolio, projekty a kontakt.">
-    <meta property="og:title" content="Alfons Walker - Portfolio">
-    <meta property="og:description" content="Nezávislý vývojář – moderní webové aplikace, software na míru a organizace tech eventů.">
+    <title>{{ page.meta.title }}</title>
+    <meta name="description" content="{{ page.meta.description }}">
+    <meta property="og:title" content="{{ page.meta.og_title }}">
+    <meta property="og:description" content="{{ page.meta.og_description }}">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://alfonswalker.com">
+    <meta property="og:locale" content="{{ page.locale }}">
+    <meta property="og:url" content="{{ page.canonical_url }}">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="theme-color" content="#f0f4f8">
     <link rel="icon" type="image/png" href="{{ static_asset('assets/img/brand/logo-mark.png') }}">
-    <link rel="canonical" href="https://alfonswalker.com/">
+    <link rel="canonical" href="{{ page.canonical_url }}">
+    <link rel="alternate" hreflang="cs" href="https://alfonswalker.com/">
+    <link rel="alternate" hreflang="en" href="https://alfonswalker.com/en">
+    <link rel="alternate" hreflang="x-default" href="https://alfonswalker.com/">
     <meta property="og:image" content="https://alfonswalker.com/static/assets/img/brand/logo-horizontal.png">
     <script type="application/ld+json">
     {
@@ -29,14 +33,14 @@
             },
             {
                 "@type": "ProfilePage",
-                "@id": "https://alfonswalker.com/#profile",
-                "url": "https://alfonswalker.com/",
-                "name": "Alfons Walker – osobní portfolio",
-                "description": "Portfolio nezávislého vývojáře se zaměřením na kybernetickou bezpečnost, webové aplikace a software na míru.",
+                "@id": "{{ page.canonical_url }}#profile",
+                "url": "{{ page.canonical_url }}",
+                "name": {{ page.meta.title | tojson }},
+                "description": {{ page.meta.description | tojson }},
                 "isPartOf": { "@id": "https://alfonswalker.com/#website" },
                 "mainEntity": { "@id": "https://alfonswalker.com/#person" },
                 "about": { "@id": "https://alfonswalker.com/#person" },
-                "inLanguage": "cs"
+                "inLanguage": "{{ page.lang }}"
             },
             {
                 "@type": "Person",
@@ -45,17 +49,18 @@
                 "alternateName": "Alfons Walker",
                 "url": "https://alfonswalker.com/",
                 "logo": "https://alfonswalker.com/static/assets/img/brand/logo-mark.png",
-                "jobTitle": "Nezávislý vývojář",
+                "jobTitle": "{{ 'Independent Web Developer' if lang == 'en' else 'Nezávislý webový vývojář' }}",
                 "knowsAbout": [
-                    "Kybernetická bezpečnost",
-                    "Vývoj webových aplikací",
-                    "Software na míru",
-                    "Elektronika",
+                    "Web Development",
+                    "Custom Software",
+                    "Cybersecurity",
+                    "Python",
+                    "Flask",
                     "Unity"
                 ],
                 "sameAs": [
                     "https://github.com/spitfire7033",
-                    "https://www.linkedin.com/in/alfons-walker-5a26b3403",
+                    "https://www.linkedin.com/in/alfonswalker/",
                     "https://www.instagram.com/alfons_walk/"
                 ],
                 "hasCredential": [
@@ -72,41 +77,13 @@
                 ]
             },
             {
-                "@type": "ItemList",
-                "@id": "https://alfonswalker.com/#projects",
-                "name": "Projekty Alfonse Walkera",
-                "itemListElement": [
-                    {
-                        "@type": "ListItem",
-                        "position": 1,
-                        "item": { "@id": "https://alfonswalker.com/#project-next-zone" }
-                    },
-                    {
-                        "@type": "ListItem",
-                        "position": 2,
-                        "item": { "@id": "https://alfonswalker.com/#project-frydryskova" }
-                    },
-                    {
-                        "@type": "ListItem",
-                        "position": 3,
-                        "item": { "@id": "https://alfonswalker.com/#project-unity" }
-                    }
-                ]
-            },
-            {
-                "@type": "Event",
-                "@id": "https://alfonswalker.com/#project-next-zone",
-                "name": "Staň se politikem",
-                "startDate": "2026-02-02",
-                "location": {
-                    "@type": "Place",
-                    "name": "Next Zone"
-                },
-                "contributor": { "@id": "https://alfonswalker.com/#person" },
-                "description": "Politická soutěž zaměřená na kritické myšlení a komunikaci, na jejíž přípravě a organizaci se Alfons Walker podílel.",
-                "image": "https://alfonswalker.com/static/assets/img/IMG_20260419_215743_241_web.jpg",
-                "url": "https://alfonswalker.com/#projects",
-                "inLanguage": "cs"
+                "@type": "ProfessionalService",
+                "@id": "https://alfonswalker.com/#service",
+                "name": "Alfons Walker – Web Development",
+                "url": "https://alfonswalker.com/",
+                "provider": { "@id": "https://alfonswalker.com/#person" },
+                "areaServed": "CZ",
+                "availableLanguage": ["cs", "en"]
             },
             {
                 "@type": "WebSite",
@@ -114,17 +91,6 @@
                 "name": "katerinafrydryskova.cz",
                 "url": "https://katerinafrydryskova.cz/",
                 "contributor": { "@id": "https://alfonswalker.com/#person" },
-                "description": "Webová stránka pro Mgr. Kateřinu Frydryškovou, na jejíž tvorbě Alfons Walker spolupracoval.",
-                "inLanguage": "cs"
-            },
-            {
-                "@type": "VideoGame",
-                "@id": "https://alfonswalker.com/#project-unity",
-                "name": "Simulátor Formule 1 v Unity",
-                "url": "https://spitfire7033.itch.io/simultor-formule-1-v-unity",
-                "creator": { "@id": "https://alfonswalker.com/#person" },
-                "description": "Závodní simulátor vytvořený v herním enginu Unity.",
-                "genre": "Racing simulation",
                 "inLanguage": "cs"
             }
         ]
@@ -143,55 +109,66 @@
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ static_asset('css/style.css') }}">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous">
 </head>
 
 <body class="portfolio-page">
-    <a href="#main-content" class="skip-link" data-i18n="nav.skipToContent">Přeskočit na hlavní obsah</a>
+    <a href="#main-content" class="skip-link">{{ page.nav.skip }}</a>
+
     <!-- Top Controls: Language & Theme -->
     <div class="top-controls">
-        <button id="langToggle" class="control-btn shadow" type="button" aria-label="Přepnout do angličtiny">
-            <i class="fa-solid fa-globe" aria-hidden="true"></i> <span id="langText">English</span>
-        </button>
-        <button id="themeToggle" class="control-btn shadow" type="button" aria-label="Přepnout na tmavý režim">
-            <i id="themeIcon" class="fa-solid fa-moon" aria-hidden="true"></i> <span id="themeText">Tmavý</span>
+        <a id="langToggle" href="{{ page.alt_url }}" hreflang="{{ page.alt_lang }}" class="control-btn shadow text-decoration-none" title="{{ page.switch_title }}" aria-label="{{ page.switch_aria }}">
+            <i class="fa-solid fa-globe" aria-hidden="true"></i> <span id="langText">{{ page.switch_label }}</span>
+        </a>
+        <button id="themeToggle" class="control-btn shadow" type="button"
+            title="{{ page.theme_to_dark_aria }}"
+            aria-label="{{ page.theme_to_dark_aria }}"
+            data-dark-label="{{ page.theme_dark_label }}"
+            data-light-label="{{ page.theme_light_label }}"
+            data-to-dark-aria="{{ page.theme_to_dark_aria }}"
+            data-to-light-aria="{{ page.theme_to_light_aria }}">
+            <i id="themeIcon" class="fa-solid fa-moon" aria-hidden="true"></i> <span id="themeText">{{ page.theme_dark_label }}</span>
         </button>
     </div>
 
     <!-- Side Navigation -->
-    <nav id="sideNav" class="side-nav" aria-label="Hlavní navigace">
+    <nav id="sideNav" class="side-nav" aria-label="{{ page.nav.aria_label }}">
         <div class="side-nav-logo-wrap pb-3 border-bottom border-secondary mb-4">
             <img src="{{ static_asset('assets/img/brand/logo-mark.png') }}" width="114" height="128" alt="Monogram Alfons Walker" class="side-nav-logo" decoding="async">
         </div>
-        <a href="#about" class="side-nav-link text-decoration-none"><i class="fa-solid fa-user me-2"></i> <span data-i18n="nav.about">O mně</span></a>
-        <a href="#projects" class="side-nav-link text-decoration-none"><i class="fa-solid fa-code me-2"></i> <span data-i18n="nav.projects">Projekty</span></a>
-        <a href="#certificates" class="side-nav-link text-decoration-none"><i class="fa-solid fa-award me-2"></i> <span data-i18n="nav.certificates">Certifikáty</span></a>
-        <a href="#contact" class="side-nav-link text-decoration-none"><i class="fa-solid fa-envelope me-2"></i> <span data-i18n="nav.contact">Kontakt</span></a>
-        <a href="/logo-manual" class="side-nav-link text-decoration-none"><i class="fa-solid fa-graduation-cap me-2"></i> <span data-i18n="nav.logoManual">Informatika ZŠ Vitae a další info</span></a>
+        <a href="#services" class="side-nav-link text-decoration-none"><i class="fa-solid fa-layer-group me-2" aria-hidden="true"></i> <span>{{ page.nav.services }}</span></a>
+        <a href="#projects" class="side-nav-link text-decoration-none"><i class="fa-solid fa-code me-2" aria-hidden="true"></i> <span>{{ page.nav.projects }}</span></a>
+        <a href="#process" class="side-nav-link text-decoration-none"><i class="fa-solid fa-diagram-project me-2" aria-hidden="true"></i> <span>{{ page.nav.process }}</span></a>
+        <a href="#about" class="side-nav-link text-decoration-none"><i class="fa-solid fa-user me-2" aria-hidden="true"></i> <span>{{ page.nav.about }}</span></a>
+        <a href="#contact" class="side-nav-link text-decoration-none"><i class="fa-solid fa-envelope me-2" aria-hidden="true"></i> <span>{{ page.nav.contact }}</span></a>
     </nav>
-    <button id="sidebarToggle" class="sidebar-toggle" type="button" title="Skrýt navigaci" aria-label="Skrýt navigaci" aria-controls="sideNav" aria-expanded="true">
+    <button id="sidebarToggle" class="sidebar-toggle" type="button"
+        title="{{ page.nav.hide_nav }}"
+        aria-label="{{ page.nav.hide_nav }}"
+        data-hide-label="{{ page.nav.hide_nav }}"
+        data-show-label="{{ page.nav.show_nav }}"
+        aria-controls="sideNav"
+        aria-expanded="true">
         <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
     </button>
     <div id="sidebarOverlay" class="sidebar-overlay" aria-hidden="true"></div>
 
+    <!-- Hero Section -->
     <header class="hero-section text-white text-center">
         <div class="hero-content container">
             <img src="{{ static_asset('assets/img/brand/logo-horizontal.png') }}" width="1645" height="612" alt="Alfons Walker" class="hero-logo mb-4" fetchpriority="high">
             <h1 class="display-3 fw-bold mb-3 hero-title">Alfons Zac Walker</h1>
-            <p class="lead fs-4 hero-subtitle" data-i18n="hero.subtitle">Kód • Kybernetická bezpečnost • Elektronika</p>
-            <div class="hero-quote mt-4">
-                <blockquote class="personal-quote" data-i18n="hero.quote">
-                    <i class="fa-solid fa-quote-left quote-icon"></i>
-                    Každý systém má slabinu. Moje práce je ji najít jako první.
-                    <i class="fa-solid fa-quote-right quote-icon"></i>
-                </blockquote>
-            </div>
-            <div class="hero-cta mt-4">
-                <a href="/logo-manual" class="btn btn-primary btn-lg px-4 py-3 shadow" data-i18n="hero.cta">
-                    Informatika ZŠ Vitae a další info <i class="fa-solid fa-graduation-cap ms-2"></i>
+            <p class="lead fs-5 hero-subtitle mb-3">{{ page.hero.subtitle }}</p>
+            <p class="hero-lead mx-auto mb-4">{{ page.hero.lead }}</p>
+            <div class="hero-cta mt-4 d-flex flex-wrap justify-content-center gap-3">
+                <a href="#contact" class="btn btn-primary btn-lg px-4 py-3 shadow">
+                    {{ page.hero.cta_primary }} <i class="fa-solid fa-paper-plane ms-2" aria-hidden="true"></i>
+                </a>
+                <a href="#projects" class="btn btn-outline-accent btn-lg px-4 py-3">
+                    {{ page.hero.cta_secondary }} <i class="fa-solid fa-arrow-down ms-2" aria-hidden="true"></i>
                 </a>
             </div>
         </div>
@@ -201,161 +178,311 @@
 
     <main id="main-content">
         <div class="container mt-5">
-            <section id="about" class="mb-5">
-            <h2 class="text-center" data-i18n="about.title">O mně</h2>
-            <div class="card mx-auto shadow-sm" style="max-width: 800px;">
-                <div class="card-body">
-                    <p class="fs-5 text-center mb-0" style="line-height: 1.8;" data-i18n="about.description">
-                        Jsem nezávislý vývojář se zaměřením na kybernetickou bezpečnost, moderní webové aplikace 
-                        a software na míru. Ke každému projektu přistupuji s důrazem na bezpečnou architekturu, 
-                        výkon a čistý kód. Od podzimu studuji obor Kybernetická bezpečnost na SSPŠ – 
-                        bezpečnost pro mě není jen téma, ale způsob myšlení.
-                    </p>
-                </div>
-            </div>
-        </section>
 
-        <section id="projects" class="mb-5">
-            <h2 class="text-center mb-4" data-i18n="projects.title">Projekty</h2>
-
-            <div class="row g-4">
-                <!-- Politics Event (Full Width) -->
-                <div class="col-12">
-                    <div class="card h-100">
-                        <div class="row g-0 h-100 align-items-center">
-                            <div class="col-md-4 text-center p-4">
-                                <img src="{{ static_asset('assets/img/IMG_20260419_215743_241_web.jpg') }}" width="375" height="250" alt="Organizace akce Next Zone" class="img-fluid project-image" loading="lazy" decoding="async">
+            <!-- Services Section -->
+            <section id="services" class="mb-5 pt-2">
+                <h2 class="text-center">{{ page.services.title }}</h2>
+                <div class="row g-3 g-lg-4">
+                    {% for service in page.services.cards %}
+                    <div class="col-lg-4">
+                        <div class="card h-100 service-card">
+                            <div class="card-body">
+                                <div class="service-card-header d-flex align-items-center gap-3 mb-2">
+                                    <div class="service-icon-badge flex-shrink-0">
+                                        <i class="{{ service.icon }}" aria-hidden="true"></i>
+                                    </div>
+                                    <h3 class="card-title mb-0">{{ service.title }}</h3>
+                                </div>
+                                <p class="card-text service-desc mb-2">{{ service.description }}</p>
+                                <ul class="service-points list-unstyled mb-0 mt-auto">
+                                    {% for point in service.points %}
+                                    <li><i class="fa-solid fa-check me-2" aria-hidden="true"></i><span>{{ point }}</span></li>
+                                    {% endfor %}
+                                </ul>
                             </div>
-                            <div class="col-md-8 px-2 project-copy">
-                                <div class="card-body p-4">
-                                    <h3 class="card-title mb-3" data-i18n="projects.politics.title">Organizace akce „Staň se politikem“ (Next Zone, 2. 2. 2026)</h3>
-                                    <p class="card-text text-start fs-5 mb-0" data-i18n="projects.politics.description">
-                                        Jako spoluorganizátor jsem se podílel na přípravě politické soutěže zaměřené na kritické
-                                        myšlení a komunikaci, která proběhla za podpory UŠI. V týmu jsem zajišťoval prostory,
-                                        logistiku, hladký průběh akce a vytvořil jsem části soutěžních disciplín. Tato
-                                        zkušenost mi přinesla praxi v týmové spolupráci a rozvoji organizačních schopností.
-                                    </p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </section>
+
+            <!-- Projects / Selected Work Section -->
+            <section id="projects" class="mb-5 pt-3">
+                <h2 class="text-center">{{ page.projects.title }}</h2>
+
+                <h3 class="subsection-heading mb-4">
+                    <i class="fa-solid fa-briefcase me-2" aria-hidden="true"></i>{{ page.projects.client_subtitle }}
+                </h3>
+
+                <!-- Featured Client Websites (Live + In-Progress Slot) -->
+                <div class="row g-4 mb-5">
+                    {% for item in projects.client %}
+                    {% set p = item[lang] %}
+                    <div class="col-lg-6">
+                        <div class="card h-100 client-project-card {{ 'client-project-card--placeholder' if item.status == 'in_progress' else '' }}">
+                            <!-- Browser Mockup Header & Visual Preview -->
+                            <div class="browser-preview {{ 'browser-preview--wip' if item.status == 'in_progress' else 'browser-preview--live' }}">
+                                <div class="browser-bar">
+                                    <div class="browser-dots" aria-hidden="true">
+                                        <span></span><span></span><span></span>
+                                    </div>
+                                    <div class="browser-address">
+                                        <i class="fa-solid {{ 'fa-lock' if item.status == 'live' else 'fa-hammer' }} me-1" aria-hidden="true"></i>
+                                        <span>{{ item.domain if item.status == 'live' else ('novy-projekt.cz' if lang == 'cs' else 'upcoming-project.cz') }}</span>
+                                    </div>
+                                    <span class="project-status-badge {{ 'status-live' if item.status == 'live' else 'status-wip' }}">
+                                        <span class="status-dot" aria-hidden="true"></span>{{ p.status_label }}
+                                    </span>
+                                </div>
+                                <div class="browser-canvas {{ 'browser-canvas--image' if item.image else '' }}">
+                                    {% if item.image %}
+                                    <img src="{{ static_asset(item.image) }}"
+                                         width="{{ item.image_width }}"
+                                         height="{{ item.image_height }}"
+                                         alt="{{ p.title }}"
+                                         class="browser-screenshot"
+                                         loading="lazy"
+                                         decoding="async">
+                                    {% elif item.status == 'live' %}
+                                    <div class="live-site-preview">
+                                        <div class="preview-icon-circle">
+                                            <i class="{{ item.icon }}" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="preview-domain-title">{{ item.domain }}</div>
+                                        <div class="preview-bars" aria-hidden="true">
+                                            <span class="bar-lg"></span>
+                                            <span class="bar-sm"></span>
+                                        </div>
+                                    </div>
+                                    {% else %}
+                                    <div class="wip-site-preview" aria-hidden="true">
+                                        <div class="wip-wireframe">
+                                            <div class="wip-nav-line"></div>
+                                            <div class="wip-hero-box">
+                                                <i class="fa-solid fa-code"></i>
+                                            </div>
+                                            <div class="wip-grid">
+                                                <span></span><span></span><span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            <div class="card-body">
+                                <div class="project-tags mb-3">
+                                    {% for tag in p.tags %}
+                                    <span class="project-tag">{{ tag }}</span>
+                                    {% endfor %}
+                                </div>
+                                <h4 class="card-title">{{ p.title }}</h4>
+                                <p class="card-text">{{ p.description }}</p>
+                                <div class="mt-auto pt-2">
+                                    {% if item.url %}
+                                    <a href="{{ item.url }}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                                        {{ p.cta_label }} <i class="fa-solid fa-arrow-up-right-from-square ms-2 small" aria-hidden="true"></i>
+                                    </a>
+                                    {% else %}
+                                    <a href="#contact" class="btn btn-outline-accent">
+                                        {{ p.cta_label }} <i class="fa-solid fa-arrow-right ms-2 small" aria-hidden="true"></i>
+                                    </a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <!-- Compact Other Projects Row (Unity + Next Zone) -->
+                <h3 class="subsection-heading mb-4">
+                    <i class="fa-solid fa-cubes me-2" aria-hidden="true"></i>{{ page.projects.other_subtitle }}
+                </h3>
+                <div class="row g-4">
+                    {% for item in projects.other %}
+                    {% set p = item[lang] %}
+                    <div class="col-lg-6">
+                        <div class="card h-100 compact-project-card">
+                            <div class="card-body p-4">
+                                <div class="d-flex flex-column flex-sm-row gap-3 align-items-start h-100">
+                                    {% if item.image %}
+                                    <img src="{{ static_asset(item.image) }}" width="135" height="90" alt="{{ p.title }}" class="compact-project-thumb flex-shrink-0" loading="lazy" decoding="async">
+                                    {% else %}
+                                    <div class="compact-project-icon flex-shrink-0" aria-hidden="true">
+                                        <i class="{{ item.icon }}"></i>
+                                    </div>
+                                    {% endif %}
+                                    <div class="d-flex flex-column h-100 w-100">
+                                        <span class="compact-project-badge mb-1">{{ p.badge }}</span>
+                                        <h4 class="compact-project-title mb-2">{{ p.title }}</h4>
+                                        <p class="card-text small mb-3">{{ p.description }}</p>
+                                        {% if p.links %}
+                                        <div class="d-flex flex-wrap align-items-center gap-3 mt-auto">
+                                            {% for link in p.links %}
+                                            <a href="{{ link.url }}" target="_blank" rel="noopener noreferrer"
+                                               class="{{ 'btn btn-sm btn-primary px-3 py-2' if link.primary else 'text-decoration-none small compact-secondary-link' }}">
+                                                <i class="{{ link.icon }} me-1" aria-hidden="true"></i> {{ link.label }}
+                                            </a>
+                                            {% endfor %}
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </section>
+
+            <!-- How I Work / Process Section -->
+            <section id="process" class="mb-5 pt-3">
+                <h2 class="text-center">{{ page.process.title }}</h2>
+                <div class="row g-4">
+                    {% for step in page.process.steps %}
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="card h-100 process-card">
+                            <div class="card-body p-4">
+                                <div class="process-step-num mb-3">{{ step.num }}</div>
+                                <h3 class="card-title fs-5 mb-2">{{ step.title }}</h3>
+                                <p class="card-text small mb-0">{{ step.description }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </section>
+
+            <!-- About, Credentials & Compact Brand Section -->
+            <section id="about" class="mb-5 pt-3">
+                <h2 class="text-center">{{ page.about.title }}</h2>
+
+                <!-- Bio Card -->
+                <div class="card mx-auto shadow-sm mb-4" style="max-width: 920px;">
+                    <div class="card-body p-4 p-md-5">
+                        <p class="fs-5 text-center mb-0" style="line-height: 1.8;">
+                            {{ page.about.description }}
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Credentials / Certificates Row -->
+                <div class="mx-auto mb-4" style="max-width: 920px;">
+                    <div class="row g-3">
+                        {% for cred in page.about.credentials %}
+                        <div class="col-md-4">
+                            <div class="card h-100 credential-card">
+                                <div class="card-body p-3 p-lg-4 text-center">
+                                    <i class="{{ cred.icon }} fa-2x mb-2 credential-icon" aria-hidden="true"></i>
+                                    <h3 class="fs-6 fw-bold mb-2" style="color: var(--card-title-color);">{{ cred.title }}</h3>
+                                    <p class="card-text small mb-0">{{ cred.text }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <!-- Small Brand & Logo Variants Strip -->
+                <div id="brand" class="card mx-auto shadow-sm brand-compact-card" style="max-width: 920px;">
+                    <div class="card-body p-4">
+                        <div class="row g-4 align-items-center">
+                            <div class="col-lg-5">
+                                <h3 class="fs-5 fw-bold mb-2" style="color: var(--card-title-color);">
+                                    <i class="fa-solid fa-palette me-2" style="color: var(--accent-color);" aria-hidden="true"></i>{{ page.about.brand_title }}
+                                </h3>
+                                <p class="card-text small mb-0">{{ page.about.brand_text }}</p>
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="row g-2">
+                                    {% for variant in logo_variants %}
+                                    <div class="col-4">
+                                        <div class="logo-variant-mini">
+                                            <img src="{{ static_asset(variant.file) }}"
+                                                 width="{{ variant.width }}"
+                                                 height="{{ variant.height }}"
+                                                 alt="{{ variant.en_label if lang == 'en' else variant.cs_label }}"
+                                                 loading="lazy"
+                                                 decoding="async">
+                                            <span class="logo-variant-caption">{{ variant.en_label if lang == 'en' else variant.cs_label }}</span>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </section>
 
-                <!-- Frydryskova -->
-                <div class="col-md-6">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h3 class="card-title" data-i18n="projects.frydryskova.title">Webová stránka katerinafrydryskova.cz</h3>
-                            <p class="card-text" data-i18n="projects.frydryskova.description">
-                                Spolupracoval jsem na tvorbě webové stránky pro Mgr. Kateřinu Frydryškovou – terapeutku
-                                vztahu k jídlu, tělu a sobě.
-                            </p>
-                            <a href="https://katerinafrydryskova.cz" target="_blank" rel="noopener noreferrer" class="btn btn-primary" data-i18n="projects.frydryskova.button">Navštívit web</a>
+            <!-- Contact Section -->
+            <section id="contact" class="mb-5 py-4">
+                <h2 class="text-center">{{ page.contact.title }}</h2>
+                <div class="card contact-card mx-auto shadow-lg">
+                    <div class="card-body">
+                        <p class="lead text-center mb-5">
+                            {{ page.contact.intro | safe }}
+                        </p>
+
+                        <form id="contactForm"
+                              action="https://formspree.io/f/mdkqdadj"
+                              method="POST"
+                              class="mb-5"
+                              data-sending="{{ page.contact.sending }}"
+                              data-success="{{ page.contact.success }}"
+                              data-error="{{ page.contact.error }}"
+                              data-network-error="{{ page.contact.network_error }}">
+                            <input type="text" name="_gotcha" class="d-none" tabindex="-1" autocomplete="off" aria-hidden="true">
+                            <div class="row g-4 mb-4">
+                                <div class="col-md-6">
+                                    <label for="contactName" class="text-muted ms-2 mb-2 small fw-bold">{{ page.contact.name }}</label>
+                                    <input id="contactName" type="text" name="name" class="form-control form-control-lg" autocomplete="name" placeholder="{{ page.contact.name_placeholder }}" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="contactEmail" class="text-muted ms-2 mb-2 small fw-bold">{{ page.contact.email }}</label>
+                                    <input id="contactEmail" type="email" name="email" class="form-control form-control-lg" autocomplete="email" inputmode="email" placeholder="{{ page.contact.email_placeholder }}" required>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <label for="contactMessage" class="text-muted ms-2 mb-2 small fw-bold">{{ page.contact.message }}</label>
+                                <textarea id="contactMessage" name="message" class="form-control form-control-lg" rows="6" placeholder="{{ page.contact.message_placeholder }}" required></textarea>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary btn-lg contact-submit py-3 mt-3">
+                                    <span>{{ page.contact.submit }}</span> <i class="fa-solid fa-paper-plane ms-2" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </form>
+
+                        <hr class="my-5 border-secondary">
+
+                        <h3 class="text-center fs-5 mb-4">{{ page.contact.social_title }}</h3>
+                        <div class="d-flex justify-content-center gap-4">
+                            <a href="https://www.linkedin.com/in/alfonswalker/" target="_blank" rel="noopener noreferrer" class="text-decoration-none" aria-label="LinkedIn">
+                                <div class="social-icon d-flex align-items-center justify-content-center" style="width: 60px; height: 60px; filter: none !important;">
+                                    <i class="fa-brands fa-linkedin-in fs-2 text-info" aria-hidden="true"></i>
+                                </div>
+                            </a>
+                            <a href="https://github.com/spitfire7033" target="_blank" rel="noopener noreferrer" class="text-decoration-none" aria-label="GitHub">
+                                <div class="social-icon d-flex align-items-center justify-content-center" style="width: 60px; height: 60px; filter: none !important;">
+                                    <i class="fa-brands fa-github fs-2" style="color: var(--github-icon-color);" aria-hidden="true"></i>
+                                </div>
+                            </a>
+                            <a href="https://www.instagram.com/alfons_walk/" target="_blank" rel="noopener noreferrer" class="text-decoration-none" aria-label="Instagram">
+                                <div class="social-icon d-flex align-items-center justify-content-center" style="width: 60px; height: 60px; filter: none !important;">
+                                    <i class="fa-brands fa-instagram fs-2" style="color: #E1306C;" aria-hidden="true"></i>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>
-
-                <!-- Unity -->
-                <div class="col-md-6">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h3 class="card-title" data-i18n="projects.unity.title">Závodní simulátor v Unity</h3>
-                            <p class="card-text" data-i18n="projects.unity.description">
-                                Závodní hra vytvořená v herním enginu Unity.
-                            </p>
-                            <div class="d-flex flex-column align-items-start gap-2">
-                                <a href="https://drive.google.com/file/d/1n6aJ8EHBr3lagVISdy7HgCGqKWx5FObn/view?usp=sharing" target="_blank" rel="noopener noreferrer"
-                                    class="btn btn-primary" data-i18n="projects.unity.docsButton">Zobrazit dokumentaci</a>
-                                <a href="https://spitfire7033.itch.io/simultor-formule-1-v-unity" target="_blank" rel="noopener noreferrer"
-                                    class="text-decoration-none small text-secondary" data-i18n="projects.unity.gameLink"><i class="fa-solid fa-gamepad me-1"></i> Hrát hru (itch.io)</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="certificates" class="mb-5">
-            <h2 class="text-center" data-i18n="certificates.title">Certifikáty &amp; Ocenění</h2>
-            <div class="row justify-content-center g-4">
-                <div class="col-md-5">
-                    <div class="card h-100">
-                        <div class="card-body text-center d-flex flex-column justify-content-center">
-                            <i class="fa-solid fa-language fa-3x mb-3 text-info"></i>
-                            <h3 class="card-title">Cambridge English (B2)</h3>
-                            <p class="card-text" data-i18n="certificates.cambridge.description">Mezinárodně uznávaný certifikát prokazující pokročilou znalost anglického jazyka a plynulou komunikaci s klienty.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-5">
-                    <div class="card h-100">
-                        <div class="card-body text-center d-flex flex-column justify-content-center">
-                            <i class="fa-solid fa-robot fa-3x mb-3 text-info"></i>
-                            <h3 class="card-title">Elements of AI</h3>
-                            <p class="card-text" data-i18n="certificates.elementsai.description">Odborné školení zaměřené na základy umělé inteligence, strojového učení a jejich praktické využití.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="mb-5 py-5">
-            <h2 class="text-center" data-i18n="contact.title">Spojme se</h2>
-            <div class="card contact-card mx-auto shadow-lg">
-                <div class="card-body">
-                    <p class="lead text-center mb-5" data-i18n="contact.intro">
-                        Máte zájem o spolupráci, potřebujete konzultaci, nebo si chcete jen popovídat o technologiích?<br>
-                        Neváhejte mě kontaktovat.
-                    </p>
-
-                    <form id="contactForm" action="https://formspree.io/f/mdkqdadj" method="POST" class="mb-5">
-                        <div class="row g-4 mb-4">
-                            <div class="col-md-6">
-                                <label for="contactName" class="text-muted ms-2 mb-2 small fw-bold" data-i18n="contact.form.name">Jméno</label>
-                                <input id="contactName" type="text" name="name" class="form-control form-control-lg" autocomplete="name" placeholder="Vaše jméno" data-i18n-placeholder="contact.form.namePlaceholder" required>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="contactEmail" class="text-muted ms-2 mb-2 small fw-bold" data-i18n="contact.form.email">Email</label>
-                                <input id="contactEmail" type="email" name="email" class="form-control form-control-lg" autocomplete="email" inputmode="email" placeholder="Váš email" data-i18n-placeholder="contact.form.emailPlaceholder" required>
-                            </div>
-                        </div>
-                        <div class="mb-4">
-                            <label for="contactMessage" class="text-muted ms-2 mb-2 small fw-bold" data-i18n="contact.form.message">Zpráva</label>
-                            <textarea id="contactMessage" name="message" class="form-control form-control-lg" rows="6" placeholder="O čem budeme mluvit?" data-i18n-placeholder="contact.form.messagePlaceholder" required></textarea>
-                        </div>
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-primary btn-lg contact-submit py-3 mt-3"><span data-i18n="contact.form.submit">Odeslat zprávu</span> <i class="fa-solid fa-paper-plane ms-2" aria-hidden="true"></i></button>
-                        </div>
-                    </form>
-
-                    <hr class="my-5 border-secondary">
-                    
-                    <h3 class="text-center mb-4" data-i18n="contact.social.title">Najdete mě na sociálních sítích</h3>
-                    <div class="d-flex justify-content-center gap-4">
-                        <a href="https://www.linkedin.com/in/alfons-walker-5a26b3403" target="_blank" rel="noopener noreferrer" class="text-decoration-none" aria-label="Profil na LinkedInu">
-                            <div class="social-icon d-flex align-items-center justify-content-center" style="width: 60px; height: 60px; filter: none !important;">
-                                <i class="fa-brands fa-linkedin-in fs-2 text-info"></i>
-                            </div>
-                        </a>
-                        <a href="https://github.com/spitfire7033" target="_blank" rel="noopener noreferrer" class="text-decoration-none" aria-label="Profil na GitHubu">
-                            <div class="social-icon d-flex align-items-center justify-content-center" style="width: 60px; height: 60px; filter: none !important;">
-                                <i class="fa-brands fa-github fs-2" style="color: var(--github-icon-color);"></i>
-                            </div>
-                        </a>
-                        <a href="https://www.instagram.com/alfons_walk/" target="_blank" rel="noopener noreferrer" class="text-decoration-none" aria-label="Profil na Instagramu">
-                            <div class="social-icon d-flex align-items-center justify-content-center" style="width: 60px; height: 60px; filter: none !important;">
-                                <i class="fa-brands fa-instagram fs-2" style="color: #E1306C;"></i>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
+            </section>
+        </div>
     </main>
 
     <footer class="text-center p-3 mt-5">
-        <p>&copy; <span id="currentYear"></span> Alfons Walker</p>
+        <p class="mb-0">&copy; <span id="currentYear"></span> Alfons Walker</p>
     </footer>
 
     <script src="{{ static_asset('js/main.js') }}"></script>

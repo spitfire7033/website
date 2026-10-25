@@ -14,4 +14,4 @@ if (-not (Get-Command gcloud -ErrorAction SilentlyContinue)) {
 gcloud app deploy app.yaml --project alfons-walker --quiet
 
 Write-Host "Deployment complete!"
-Write-Host "Visit your site at: https://alfons-walker.uc.r.appspot.com"
+Write-Host "Visit your site at: https://alfonswalker.com (https://alfons-walker.lm.r.appspot.com)"
