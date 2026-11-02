@@ -189,6 +189,7 @@ PAGES = {
                 "Moderní webové stránky, software na míru a důraz na kybernetickou bezpečnost. "
                 "Prohlédněte si vybrané projekty a ozvěte se pro nezávaznou konzultaci."
             ),
+            "og_image_alt": "Alfons Walker - Independent Web Developer (Python, Flask, Cybersecurity)",
         },
         "nav": {
             "skip": "Přeskočit na hlavní obsah",
@@ -360,6 +361,7 @@ PAGES = {
                 "Modern websites, custom software, and security-first engineering. "
                 "Explore selected client work and get in touch for a consultation."
             ),
+            "og_image_alt": "Alfons Walker - Independent Web Developer (Python, Flask, Cybersecurity)",
         },
         "nav": {
             "skip": "Skip to main content",
